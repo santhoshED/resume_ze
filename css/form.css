@@ -1,0 +1,118 @@
+.wrapper{
+	width: 597px;
+	background-color: #ffffff;
+	border: 1px solid #cccccc ;
+	margin:0 auto;
+}
+.header{
+	display:flex;
+	padding:26px 15px 0px 30px;
+	justify-content:space-between;
+}
+.header .url{
+	text-decoration: none;
+	font-size: 12px;
+	font-family: Roboto;
+	margin-top: 6px;
+	color:#00aaff;
+}
+.body{
+	padding:30px 30px;
+}
+
+.body .employee_name{
+	font-family: Roboto;
+	font-size: 18px;
+	color:#333333;
+}
+.body .res_row{
+	display:flex;
+	padding-top:30px;
+	justify-content:space-between;
+}
+.heading{
+	font-size: 14px;
+	color:#333333;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-stretch:normal;
+	margin: 1px 0;
+}
+.underline{
+	margin:1px 0px 5px 0px;
+	width:244px;
+	height:3px;
+	color:rgba(0, 0, 0, 0.1);
+}
+.underline_2{
+	margin:1px 0px 5px 0px;
+	width:229px;
+	height:3px;
+	color:rgba(0, 0, 0, 0.1);	
+}
+.underline_3{
+	margin:1px 0px 5px 0px;
+	width:394px;
+	height:3px;
+	color:rgba(0, 0, 0, 0.1);
+}
+.res_col{
+	width: 50%;
+}
+.res_col_2{
+	width:50%;
+	padding-left: 38px;
+}
+.res_col_3{
+	width:100%;
+}
+.course{
+	margin-top:5px;
+	margin-bottom: 5px !important;
+}
+
+.skill_heading{
+	color:#333333;
+	font-size: 12px;
+	font-family: Roboto;
+  	font-weight: normal;
+  	font-style: normal;
+  	font-stretch: normal;
+}
+.work_experience{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+}
+
+.add{
+	margin-top: 10px;
+}
+.submit{
+	margin:25px 225px;
+}
+.check-mark{ 
+	display: none !important 
+}
+.project-group{
+	margin:10px 0px;
+	width:100%;
+}
+.project{
+	display: flex;
+	flex-direction:column;
+}
+.project_block{
+	border:solid 1px #e6e6e6;
+	padding:10px 10px 10px 10px;
+}
+.side-heading{
+	font-family: Roboto;
+  	font-size: 12px;
+  	font-weight: normal;
+  	font-style: normal;
+  	font-stretch: normal;
+  	color: #333333;
+  	margin-bottom: 3px;
+}

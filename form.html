@@ -1,0 +1,211 @@
+<!Doctype html>
+<html>
+<head>
+	<title>Resume</title>
+	<link rel="stylesheet" type="text/css" href="./css/form.css">
+
+	<link rel="stylesheet" type="text/css" href="./scripts/bootstrap.css">
+	<link rel="stylesheet" href="./scripts/bootstrap-select.min.css">
+
+	<script src="./scripts/jquery.min.js"></script>
+  	<script src="./scripts/bootstrap.min.js"></script>
+  	<script src="./scripts/bootstrap-select.min.js"></script>
+  	<script href="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>  	
+
+  	<script type="text/javascript" src="./form.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<img src="./images/logo.png"/>
+			<a href="./zemosolabs" class="url">www.zemosolabs.com</a>
+		</div>
+		<div class="body">
+			<form  action="/preview" method="POST">
+				<div class ="employee_name input-group">
+					<input 
+						class="form-control" 
+						type="text" 
+						name="employee_name"
+						placeholder="Employee Name"/>
+				</div>
+				<div class="res_row">
+					<div class="res_col">
+						<p class="heading">SUMMARY</p>
+						<hr class="underline">
+						<div class="form-group">
+							<textarea 
+								class="form-control" 
+								type="text" 
+								name="summary" 
+								maxlength="400" 
+								rows="12"></textarea>
+						</div> 
+					</div>
+					<div class="res_col_2">
+						<p class="heading">EDUCATION</p>
+						<hr class="underline_2">
+						<div id="education" class="education form-group">
+							<div class="education_block form-group">
+								<select 
+									class="selectpicker form-control" 
+									name="college[][name]" 
+									title="College Name" 
+									data-live-search="true">
+								  <option>College 1</option>
+								</select>
+								<select 
+									class="selectpicker course form-control" 
+									name="college[][course]"
+									title="Course" 
+									data-live-search="true">
+								  <option>Course 1</option>
+								</select>
+								<div class="input-group">
+								  <input 
+								  	type="text" 
+								  	class="form-control" 
+								  	name="college[][from]" 
+								  	placeholder="Year">
+								  <span class="input-group-addon">To</span>
+								  <input 
+								  	type="text" 
+								  	class="form-control" 
+								  	name="college[][to]" 
+								  	placeholder="Year">
+								</div>
+							</div>
+						</div>
+						<button type="button" class="add btn btn-default" onClick="addCollegeBlock()">ADD</button>
+					</div>
+				</div>
+				<div class="res_row">
+					<div class="res_col">
+						<p class="heading">WORK EXPERIENCE</p>
+						<hr class="underline">
+						<div id="work_experience"class="form-group">
+							<div class="work_experience_block input-group form-group">
+								<input 
+									class="form-control" 
+									type="text" 
+									name="workexperience[][designation]"
+									placeholder="Designation"/>
+								<input 
+									class="form-control" 
+									type="text" 
+									name="workexperience[][organisation]"
+									placeholder="Organisation Name"/>
+								<div class="input-group">
+								  <input 
+								  	type="text" 
+								  	class="form-control"
+								  	name="workexperience[][from]" 
+								  	placeholder="mon,year">
+								  <span class="input-group-addon">To</span>
+								  <input 
+								  	type="text" 
+								  	class="form-control"
+								  	name="workexperience[][to]" 
+								  	placeholder="mon,year">
+								</div>
+								<input 
+									class="form-control" 
+									type="text" 
+									name="workexperience[][place]"
+									placeholder="City,Country"/>
+							</div>	
+						</div>
+						<button type="button" class="add btn btn-default" onClick="addWorkBlock()">ADD</button>
+					</div>
+					<div class="res_col_2">
+						<p class="heading">SKILLS</p>
+						<hr class="underline_2">
+						<div class ="skills form-group">
+							<p class="skill_heading">Server Side:</p>
+							<select 
+								class="selectpicker form-control" 
+								multiple 
+								title="Skills" 
+								data-live-search="true"
+								name="server_side">
+								<option>Server 1</option>
+								<option>Server 2</option>
+							</select>
+							<br></br>
+							<p class="skill_heading">Front End:</p>
+							<select 
+								class="selectpicker form-control" 
+								multiple 
+								title="Skills" 
+								data-live-search="true"
+								name="front_end">
+								<option>front 1</option>
+								<option>front 2</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="res_row">
+					<div class="res_col_3">
+						<p class="heading">IMPLEMENTATION EXPERIENCE AT ZEMOSO TECHNOLOGIES</p>
+						<hr class="underline_3">
+						<div id="project" class="project">
+						<div class="form-group project_block">
+							<div class="input-group project-group">
+								<input 
+									class="form-control" 
+									type="text" 
+									name="projects[][name]"
+									placeholder="Project Name"/>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Description:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="projects[][description]" 
+									maxlength="400" 
+									rows="4"></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Contribution:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="projects[][contribution]" 
+									maxlength="200" 
+									rows="2"></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Duration:</p>
+								<input 
+								class="form-control" 
+								type="text" 
+								name="projects[][duration]"
+								placeholder="Duration"/>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Technologies:</p>
+								<select 
+									class="selectpicker form-control" 
+									multiple 
+									title="Technologies" 
+									data-live-search="true"
+									name="projects[][technologies]">
+									<option>tech 1</option>
+									<option>tech 2</option>
+								</select>
+							</div>
+						</div>
+						</div>
+						<button type="button" class="add btn btn-default" onClick="addProjectBlock()">ADD</button>
+					</div>	
+				</div>
+				<div class='form-group'>
+           		    	 <button class="btn btn-primary submit" type="submit">Submit</button>
+            	</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
