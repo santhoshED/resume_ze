@@ -1,0 +1,168 @@
+p,img{
+	margin:0px 0px !important;
+}
+.wrapper{
+	width: 597px;
+	background-color: #ffffff;
+	border: 1px solid #cccccc ;
+	margin:0 auto;
+}
+.header{
+	display:flex;
+	padding:26px 15px 0px 30px;
+	justify-content:space-between;
+}
+.header .url{
+	text-decoration: none;
+	font-size: 12px;
+	font-family: Roboto;
+	margin-top: 6px;
+	color:#00aaff;
+}
+.body{
+	padding:30px 30px;
+}
+.body .employee_name{
+	font-family: Roboto;
+	font-size: 18px;
+	color:#333333;
+	font-weight: normal;
+  	font-style: normal;
+  	font-stretch: normal;
+}
+.body .res_row{
+	display:flex;
+	padding-top:30px;
+	justify-content:space-between;
+}
+.heading{
+	font-size: 14px;
+	color:#333333;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-stretch:normal;
+}
+.underline{
+	margin:1px 0px 5px 0px;
+	width:244px;
+	height:2px;
+	color:rgba(0, 0, 0, 0.1);
+}
+.underline_2{
+	margin:1px 0px 5px 0px;
+	width:229px;
+	height:2px;
+	color:rgba(0, 0, 0, 0.1);	
+}
+.res_col{
+	width: 50%;
+}
+.res_col_2{
+	width:50%;
+	padding-left: 38px;
+}
+.summary{
+	font-family: Roboto;
+  	font-size: 12px;
+  	font-weight: 300;
+  	font-style: normal;
+  	font-stretch: normal;
+  	color: #666666;
+}
+.education{
+	display:flex;
+	flex-direction:column;
+}
+	.education_block{
+		margin:0px 25px 20px 0px;
+		display: flex;
+	}
+		.education_img{
+			height: 34px;
+			width:34px;
+			margin: 20px 10px 0px 0px !important;
+		}
+		.education_name{
+			font-family: Roboto;
+  			font-size: 12px;
+  			font-weight: normal;
+  			font-style: normal;
+  			font-stretch: normal;
+  			color: #333333;
+		}
+		.education_course{
+			font-family: Roboto;
+		  	font-size: 12px;
+		  	font-weight: 300;
+		  	font-style: normal;
+		  	font-stretch: normal;
+		  	color: #666666;
+		  	margin:5px 0px 4px 0px !important;
+		}
+		.education_time{
+			font-family: Roboto;
+			font-size: 12px;
+			font-weight: normal;
+			font-style: normal;
+			font-stretch: normal;
+			color: #333333;
+		}
+.skills{
+	display: flex;
+	flex-direction:column;
+}
+
+	.skill_heading{
+		color:#333333;
+		font-size: 12px;
+		font-family: Roboto;
+	  	font-weight: normal;
+	  	font-style: normal;
+	  	font-stretch: normal;
+	}
+	.skill_image{
+		margin:0px 7px 5px 0px !important;
+	}
+	.skill_images{
+		display:flex;
+		flex-wrap:wrap;
+		margin:5px 0px 10px 0px;
+	}
+.work_experience{
+	display:flex;
+	flex-direction:column;
+}
+	.work_experience_block{
+		display: flex;
+	}
+		.work_experience_content{
+			padding-left: 22px;
+			font-family:Roboto;
+		}
+		.work_ex_designation{
+  			font-size: 12px;
+  			font-weight: normal;
+  			font-style: normal;
+  			font-stretch: normal;
+  			color: #333333;
+  			display:inline-block;
+		}
+		.work_ex_time{
+			font-size: 10px;
+			font-weight: 300;
+			font-style: normal;
+			font-stretch: normal;
+	  		color: #666666;
+	  		display:inline-block;
+		}
+		.work_ex_organisation,.work_ex_place{
+			font-size: 12px;
+		  	font-weight: 300;
+		  	font-style: normal;
+		  	font-stretch: normal;
+		  	color: #666666;
+		}
+		.work_ex_place{
+			margin-bottom:10px !important;
+		}
