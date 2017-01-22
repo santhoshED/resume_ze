@@ -28,6 +28,16 @@
 						type="text" 
 						name="employee_name"
 						placeholder="Employee Name"/>
+					<input 
+						class="form-control employee_position" 
+						type="text" 
+						name="employee_position"
+						placeholder="Current Designation"/>
+					<input 
+						class="form-control employee_location" 
+						type="text" 
+						name="employee_location"
+						placeholder="Location"/>
 				</div>
 				<div class="res_row">
 					<div class="res_col">
@@ -47,33 +57,23 @@
 						<hr class="underline_2">
 						<div id="education" class="education form-group">
 							<div class="education_block form-group">
-								<select 
-									class="selectpicker form-control" 
+								<select
+									id="CollegeSelect" 
+									class="selectpicker form-control education-group" 
 									name="college[][name]" 
 									title="College Name" 
-									data-live-search="true">
-								  <option>College 1</option>
+									data-live-search="true">  
 								</select>
-								<select 
-									class="selectpicker course form-control" 
-									name="college[][course]"
-									title="Course" 
-									data-live-search="true">
-								  <option>Course 1</option>
-								</select>
-								<div class="input-group">
-								  <input 
-								  	type="text" 
-								  	class="form-control" 
-								  	name="college[][from]" 
-								  	placeholder="Year">
-								  <span class="input-group-addon">To</span>
-								  <input 
-								  	type="text" 
-								  	class="form-control" 
-								  	name="college[][to]" 
-								  	placeholder="Year">
-								</div>
+								<input 
+									class="form-control education-group" 
+									type="text" 
+									name="college[][degree]"
+									placeholder="Degree"/>
+								<input 
+									class="form-control education_year" 
+									type="text" 
+									name="college[][year]"
+									placeholder="Graduation Year"/>
 							</div>
 						</div>
 						<button type="button" class="add btn btn-default" onClick="addCollegeBlock()">ADD</button>
@@ -86,33 +86,33 @@
 						<div id="work_experience"class="form-group">
 							<div class="work_experience_block input-group form-group">
 								<input 
-									class="form-control" 
+									class="form-control work-group" 
 									type="text" 
 									name="workexperience[][designation]"
 									placeholder="Designation"/>
 								<input 
-									class="form-control" 
+									class="form-control work-group" 
 									type="text" 
 									name="workexperience[][organisation]"
 									placeholder="Organisation Name"/>
-								<div class="input-group">
+								<div class="input-group work-group">
 								  <input 
 								  	type="text" 
 								  	class="form-control"
 								  	name="workexperience[][from]" 
-								  	placeholder="mon,year">
+								  	placeholder="Month, Year">
 								  <span class="input-group-addon">To</span>
 								  <input 
 								  	type="text" 
 								  	class="form-control"
 								  	name="workexperience[][to]" 
-								  	placeholder="mon,year">
+								  	placeholder="Month, Year">
 								</div>
 								<input 
 									class="form-control" 
 									type="text" 
 									name="workexperience[][place]"
-									placeholder="City,Country"/>
+									placeholder="City, Country"/>
 							</div>	
 						</div>
 						<button type="button" class="add btn btn-default" onClick="addWorkBlock()">ADD</button>
@@ -123,32 +123,34 @@
 						<div class ="skills form-group">
 							<p class="skill_heading">Server Side:</p>
 							<select 
-								class="selectpicker form-control" 
+								class="selectpicker form-control skillSelect" 
 								multiple 
 								data-live-search="true"
 								name="server_side">
-								<option>Server 1</option>
-								<option>Server 2</option>
 							</select>
-							<br></br>
+							<br>
 							<p class="skill_heading">Front End:</p>
 							<select 
-								class="selectpicker form-control" 
+								class="selectpicker form-control skillSelect" 
 								multiple  
 								data-live-search="true"
 								name="front_end">
-								<option>front 1</option>
-								<option>front 2</option>
 							</select>
-							<br></br>
+							<br>
 							<p class="skill_heading">DataBases:</p>
 							<select 
-								class="selectpicker form-control" 
+								class="selectpicker form-control skillSelect" 
 								multiple 
 								data-live-search="true"
 								name="databases">
-								<option>data 1</option>
-								<option>data 2</option>
+							</select>
+							<br>
+							<p class="skill_heading">Technologies:</p>
+							<select 
+								class="selectpicker form-control skillSelect" 
+								multiple  
+								data-live-search="true"
+								name="technologies">
 							</select>
 						</div>
 					</div>
@@ -172,8 +174,17 @@
 									class="form-control" 
 									type="text" 
 									name="projects[][description]" 
-									maxlength="400" 
-									rows="4"></textarea>
+									maxlength="600" 
+									rows="6"></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Approach:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="projects[][approach]" 
+									maxlength="500" 
+									rows="5"></textarea>
 							</div>
 							<div class="input-group project-group">
 								<p class="side-heading">Contribution:</p>
@@ -181,8 +192,8 @@
 									class="form-control" 
 									type="text" 
 									name="projects[][contribution]" 
-									maxlength="200" 
-									rows="2"></textarea>
+									maxlength="300" 
+									rows="3"></textarea>
 							</div>
 							<div class="input-group project-group">
 								<p class="side-heading">Duration:</p>
@@ -195,13 +206,11 @@
 							<div class="input-group project-group">
 								<p class="side-heading">Technologies:</p>
 								<select 
-									class="selectpicker form-control" 
+									class="selectpicker form-control skillSelect" 
 									multiple 
 									title="Technologies" 
 									data-live-search="true"
-									name="projects[][technologies]">
-									<option>tech 1</option>
-									<option>tech 2</option>
+									name="projects[[]][technologies]">
 								</select>
 							</div>
 						</div>
@@ -209,11 +218,76 @@
 						<button type="button" class="add btn btn-default" onClick="addProjectBlock()">ADD</button>
 					</div>	
 				</div>
+            	<div class="res_row">
+					<div class="res_col_3">
+						<p class="heading">SOME PRIOR IMPLEMENTATION EXPERIENCE</p>
+						<hr class="underline_3">
+						<div id="prior_project" class="project">
+						<div class="form-group project_block">
+							<div class="input-group project-group">
+								<input 
+									class="form-control" 
+									type="text" 
+									name="prior_projects[][name]"
+									placeholder="Project Name"/>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Description:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="prior_projects[][description]" 
+									maxlength="600" 
+									rows="6"></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Approach:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="prior_projects[][approach]" 
+									maxlength="500" 
+									rows="5"></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Contribution:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="prior_projects[][contribution]" 
+									maxlength="300" 
+									rows="3"></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Duration:</p>
+								<input 
+								class="form-control" 
+								type="text" 
+								name="prior_projects[][duration]"
+								placeholder="Duration"/>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Technologies:</p>
+								<select
+									id="prior_fullStackSelect" 
+									class="selectpicker form-control" 
+									multiple 
+									title="Technologies" 
+									data-live-search="true"
+									name="prior_projects[[]][technologies]">
+								</select>
+							</div>
+						</div>
+						</div>
+						<button type="button" class="add btn btn-default" onClick="addPriorProjectBlock()">ADD</button>
+					</div>	
+				</div>
 				<div class='form-group'>
            		    	 <button class="btn btn-primary submit" type="submit">Submit</button>
             	</div>
 			</form>
 		</div>
+		<script type="text/javascript">renderUniversities();renderSkills();renderProjectTechnologies()</script>
 	</div>
 </body>
 </html>

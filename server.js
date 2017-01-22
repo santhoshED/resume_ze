@@ -8,6 +8,7 @@ server.use(bodyParser.urlencoded({extended: true}));
 const path = require('path');
 server.use('/images',express.static(path.join(__dirname,'images')));
 server.use('/scripts',express.static(path.join(__dirname,'scripts')));
+server.use('/css',express.static(path.join(__dirname,'css')));
 
 const preview = require('./preview.js');
 
@@ -17,8 +18,8 @@ const preview = require('./preview.js');
 
 server.get('/',(req,res)=>{res.sendFile(__dirname +'/form.html')});
 
-server.get('/css/form.css',(req,res)=>{res.sendFile(__dirname +'/css/form.css')});
 server.get('/form.js',(req,res)=>{res.sendFile(__dirname + '/form.js')});	
+
 
 server.post('/preview', preview);
 
