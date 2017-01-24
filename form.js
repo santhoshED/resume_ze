@@ -39,7 +39,7 @@ const database = {
 		 "Oracle":"Oracle.png",
 		 "PostgreSQL":"PostgreSQL_WT.png",
 		 "Python Pandas":"python_pandas_WT.png",
-		 "R":"R.png",
+		 "R ":"R.png",
 		 "Teradata":"TERADATA_WT.png",
 		 "Yarn":"Yarn_WT.png",
 		"Active Admin":"Active_Admin_WT.png",

@@ -7,386 +7,436 @@
 </head>
 <body>
 	<div class="wrapper">
-	<div class="page">
-		<div class="header">
-			<img class="logo" src="./images/logo.png"/>
-			<a class="url">www.zemosolabs.com</a>
-		</div>
-		<div class="body">			
-			<div class ="introduction">
-				<p class="employee_name"><%= employee_name %></p>
-				<p class="employee_position"><%=employee_position%></p>
-				<p class="employee_position" style="display:inline-block">Location:</p>
-				<p class="employee_location"><%=employee_location%></p>
+		<div class="indexpage">
+			<div class="header">
+				<img class="logo" src="./images/logo.png"/>
+				<a class="url">www.zemosolabs.com</a>
 			</div>
-			<div class="res_row">
-				<div class="res_col">
-					<p class="heading">SUMMARY</p>
-					<hr class="underline">
-					<div class="summary">
-						<%for(var i=0;i<summary.length;i++){
-							if(summary[i].length>0){%>
-						<p class="summary_content"><%=summary[i]%></p><%}}%>
-					</div> 
+			<div class="body">			
+				<div class ="introduction">
+					<p class="employee_name"><%= employee_name %></p>
+					<p class="employee_position"><%=employee_position%></p>
+					<p class="employee_position" style="display:inline-block">Location:</p>
+					<p class="employee_location"><%=employee_location%></p>
 				</div>
-				<div class="res_col_2">
-					<p class="heading">EDUCATION</p>
-					<hr class="underline">
-					<div id="education" class="education">
-					<% if(college.name.constructor===Array){ 
-					for(var i=0;i<college.name.length;i++){
-						if(college.name[i].length>0){%>
+				<div class="res_row">
+					<div class="res_col">
+						<p class="heading">SUMMARY</p>
+						<hr class="underline">
+						<div class="summary">
+							<%for(var i=0;i<summary.length;i++){
+								if(summary[i].length>0){%>
+							<p class="summary_content"><%=summary[i]%></p><%}}%>
+						</div> 
+					</div>
+					<div class="res_col_2">
+						<p class="heading">EDUCATION</p>
+						<hr class="underline">
+						<div id="education" class="education">
+						<% if(college.name.constructor===Array){ 
+						for(var i=0;i<college.name.length;i++){
+							if(college.name[i].length>0){%>
 
-						<div class="education_block">	
-							<div>
-								<img class="education_img" src=<%="./images/university/"+college_images[i]%>></img>
+							<div class="education_block">	
+								<div>
+									<img class="education_img" src=<%="./images/university/"+college_images[i]%>></img>
+								</div>
+								<div class="education_content">
+									<p class="education_name"><%=college.name[i]%></p>
+									<p class="education_course"><%=college.degree[i]%></p>
+									<p class="education_time"><%=college.year[i]%></p>
+								</div>
 							</div>
-							<div class="education_content">
-								<p class="education_name"><%=college.name[i]%></p>
-								<p class="education_course"><%=college.degree[i]%></p>
-								<p class="education_time"><%=college.year[i]%></p>
+							<%}}}
+							else{%>
+							<div class="education_block">	
+								<div>
+									<img class="education_img" src=<%="./images/university/"+college_images[0]%>></img>
+								</div>
+								<div class="education_content">
+									<p class="education_name"><%=college.name%></p>
+									<p class="education_course"><%=college.degree%></p>
+									<p class="education_time"><%=college.year%></p>
+								</div>
 							</div>
+							<%}%>
 						</div>
-						<%}}}
-						else{%>
-						<div class="education_block">	
-							<div>
-								<img class="education_img" src=<%="./images/university/"+college_images[0]%>></img>
+					</div>
+				</div>
+				<div class="res_row">
+					<div class="res_col">
+						<p class="heading">WORK EXPERIENCE</p>
+						<hr class="underline">
+						<div id="work_experience"class="work-experience">
+						<% if(workex.designation.constructor === Array){ 
+						for(var i=0;i<workex.designation.length;i++){
+							if(workex.designation[i].length>0){%>
+							<div class="work_experience_block">
+								<div class="work_experience_vector">
+								<%
+								var img_1;
+								var img_2;
+								if(i == 0 ){img_1="./images/vector/arrow.png"} 
+									else {img_1="./images/vector/small.png"}
+								if(i==workex.designation.length-1|| workex.designation[i+1].length ==0){img_2="./images/vector/start.png"}
+									else{img_2="./images/vector/large.png"}
+								%>
+									<img class="vector-image" src=<%=img_1%>></img>
+									<img class="vector-image_1" src="./images/vector/circle.png"/>
+									<img class="vector-image" src="./images/vector/small.png"/>
+									<img class="vector-image" src=<%=img_2%>></img>
+								</div>
+								<div class="work_experience_content">
+									<p class="work_ex_designation"><%=workex.designation[i]%></p>
+									<p class="work_ex_time">(<%=workex.from[i]%> to <%=workex.to[i]%>)</p>
+									<p class="work_ex_organisation"><%=workex.organisation[i]%></p>
+									<p class="work_ex_place"><%=workex.place[i]%></p>
+								</div>
 							</div>
-							<div class="education_content">
-								<p class="education_name"><%=college.name%></p>
-								<p class="education_course"><%=college.degree%></p>
-								<p class="education_time"><%=college.year%></p>
+							<%}}}
+							else{%>
+							<div class="work_experience_block">
+								<div class="work_experience_vector">
+									<img class="vector-image" src="./images/vector/arrow.png"/>
+									<img class="vector-image_1" src="./images/vector/circle.png"/>
+									<img class="vector-image" src="./images/vector/small.png"/>
+									<img class="vector-image" src="./images/vector/start.png"/>
+								</div>
+								<div class="work_experience_content">
+									<p class="work_ex_designation"><%=workex.designation%></p>
+									<p class="work_ex_time">(<%=workex.from%> to <%=workex.to%>)</p>
+									<p class="work_ex_organisation"><%=workex.organisation%></p>
+									<p class="work_ex_place"><%=workex.place%></p>
+								</div>
 							</div>
+							<%}%>	
 						</div>
-						<%}%>
+					</div>
+					<div class="res_col_2">
+						<p class="heading">SKILLS</p>
+						<hr class="underline">
+						<div id="skills" class ="skills">
+							<% if(server_side_images.length>0){%>
+							<div class="skill_heading">
+								<p>Server Side:</p>
+							</div>
+							<div class="skill_images">
+								<%for(var i=0;i<server_side_images.length;i++){%>
+								<img class="skill_image" src=<%="./images/full_stack/"+server_side_images[i]%>></img>
+								<%}%>
+							</div>
+							<%} if(front_end_images.length>0){%>
+							<div class="skill_heading">
+								<p>Front End:</p>
+							</div>
+							<div class="skill_images">
+								<%for(var i=0;i<front_end_images.length;i++){%>
+								<img class="skill_image" src=<%="./images/full_stack/"+front_end_images[i]%>></img>
+								<%}%>
+							</div>
+							<%} if(databases_images.length>0){%>
+							<div class="skill_heading">
+								<p>DataBases:</p>
+							</div>
+							<div class="skill_images">
+								<%for(var i=0;i<databases_images.length;i++){%>
+								<img class="skill_image" src=<%="./images/full_stack/"+databases_images[i]%>></img>
+								<%}%>
+							</div>
+							<%} if(technologies_images.length>0){%>
+							<div class="skill_heading">
+								<p>Architectures & Cloud Services:</p>
+							</div>
+							<div class="skill_images">
+								<%for(var i=0;i<technologies_images.length;i++){%>
+								<img class="skill_image" src=<%="./images/full_stack/"+technologies_images[i]%>></img>
+								<%}%>
+							</div>
+							<%}%>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="res_row">
-				<div class="res_col">
-					<p class="heading">WORK EXPERIENCE</p>
-					<hr class="underline">
-					<div id="work_experience"class="work-experience">
-					<% if(workex.designation.constructor === Array){ 
-					for(var i=0;i<workex.designation.length;i++){
-						if(workex.designation[i].length>0){%>
-						<div class="work_experience_block">
-							<div class="work_experience_vector">
-							<%
-							var img_1;
-							var img_2;
-							if(i == 0 ){img_1="./images/vector/arrow.png"} 
-								else {img_1="./images/vector/small.png"}
-							if(i==workex.designation.length-1|| workex.designation[i+1].length ==0){img_2="./images/vector/start.png"}
-								else{img_2="./images/vector/large.png"}
-							%>
-								<img class="vector-image" src=<%=img_1%>></img>
-								<img class="vector-image_1" src="./images/vector/circle.png"/>
-								<img class="vector-image" src="./images/vector/small.png"/>
-								<img class="vector-image" src=<%=img_2%>></img>
-							</div>
-							<div class="work_experience_content">
-								<p class="work_ex_designation"><%=workex.designation[i]%></p>
-								<p class="work_ex_time">(<%=workex.from[i]%> to <%=workex.to[i]%>)</p>
-								<p class="work_ex_organisation"><%=workex.organisation[i]%></p>
-								<p class="work_ex_place"><%=workex.place[i]%></p>
-							</div>
+		</div>
+			<%if(projects.name.length>0){
+			if(projects.name.constructor===Array){ 
+						for(var i=0;i<projects.name.length;i++){
+							if(projects.name[i].length>0){%>
+		<div class="page">
+			<div class="header">
+				<img class="logo" src="./images/logo.png"/>
+				<a class="url">www.zemosolabs.com</a>
+			</div>
+			<div class="body">					
+				<p class="heading">IMPLEMENTATION EXPERIENCE AT ZEMOSO TECHNOLOGIES:</p>
+				<hr class="underline_3">
+				<div id="project" class="project">
+					
+					<div class="project_block">
+						<div>
+							<p class="project_name">Project Name:</p>
+							<p class="project_name_1"><%=projects.name[i]%></p>
 						</div>
-						<%}}}
-						else{%>
-						<div class="work_experience_block">
-							<div class="work_experience_vector">
-								<img class="vector-image" src="./images/vector/arrow.png"/>
-								<img class="vector-image_1" src="./images/vector/circle.png"/>
-								<img class="vector-image" src="./images/vector/small.png"/>
-								<img class="vector-image" src="./images/vector/start.png"/>
-							</div>
-							<div class="work_experience_content">
-								<p class="work_ex_designation"><%=workex.designation%></p>
-								<p class="work_ex_time">(<%=workex.from%> to <%=workex.to%>)</p>
-								<p class="work_ex_organisation"><%=workex.organisation%></p>
-								<p class="work_ex_place"><%=workex.place%></p>
-							</div>
+					
+						<div class="side-heading">
+							<p>Description:</p>
 						</div>
-						<%}%>	
-					</div>
-				</div>
-				<div class="res_col_2">
-					<p class="heading">SKILLS</p>
-					<hr class="underline">
-					<div id="skills" class ="skills">
-						<% if(server_side_images.length>0){%>
-						<div class="skill_heading">
-							<p>Server Side:</p>
+						<div class="project_content">
+							<% var projects_description = projects.description[i].split("\r\n");
+							for(var j=0;j<projects_description.length;j++){
+								if(projects_description[j].length>0){%>
+							<p><%=projects_description[j]%></p><%}}%>
+
 						</div>
-						<div class="skill_images">
-							<%for(var i=0;i<server_side_images.length;i++){%>
-							<img class="skill_image" src=<%="./images/full_stack/"+server_side_images[i]%>></img>
-							<%}%>
+
+						<div class="side-heading">
+							<p>Approach:</p>
 						</div>
-						<%} if(front_end_images.length>0){%>
-						<div class="skill_heading">
-							<p>Front End:</p>
+						<div class="project_content">
+							<% var projects_description = projects.approach[i].split("\r\n");
+							for(var j=0;j<projects_description.length;j++){
+								if(projects_description[j].length>0){%>
+							<p><%=projects_description[j]%></p><%}}%>
 						</div>
-						<div class="skill_images">
-							<%for(var i=0;i<front_end_images.length;i++){%>
-							<img class="skill_image" src=<%="./images/full_stack/"+front_end_images[i]%>></img>
-							<%}%>
-						</div>
-						<%} if(databases_images.length>0){%>
-						<div class="skill_heading">
-							<p>DataBases:</p>
-						</div>
-						<div class="skill_images">
-							<%for(var i=0;i<databases_images.length;i++){%>
-							<img class="skill_image" src=<%="./images/full_stack/"+databases_images[i]%>></img>
-							<%}%>
-						</div>
-						<%} if(technologies_images.length>0){%>
-						<div class="skill_heading">
+						
+						<div class="side-heading">
 							<p>Technologies:</p>
-						</div>
-						<div class="skill_images">
-							<%for(var i=0;i<technologies_images.length;i++){%>
-							<img class="skill_image" src=<%="./images/full_stack/"+technologies_images[i]%>></img>
+						</div>	
+						<div class="project_content project_images">
+							<% for(var j=0;j<proj_images[i].length;j++){%>
+
+							<img class="project_image" src=<%="./images/full_stack/"+proj_images[i][j]%>></img>
+
 							<%}%>
 						</div>
-						<%}%>
+						<div class="side-heading">
+							<p>Contribution:</p>
+						</div>
+						<div class="project_content">
+							<% var projects_description = projects.contribution[i].split("\r\n");
+							for(var j=0;j<projects_description.length;j++){
+								if(projects_description[j].length>0){%>
+							<p><%=projects_description[j]%></p><%}}%>
+						</div>
+						<div class="side-heading">
+							<p>Duration:</p>
+						</div>
+						<div class="project_content">
+							<p><%=projects.duration[i]%></p>
+						</div>
+							
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-		<%if(projects.name.length>0){
-		if(projects.name.constructor===Array){ 
-					for(var i=0;i<projects.name.length;i++){
-						if(projects.name[i].length>0){%>
-	<div class="page">
-		<div class="header">
-			<img class="logo" src="./images/logo.png"/>
-			<a class="url">www.zemosolabs.com</a>
-		</div>
-		<div class="body">					
-			<p class="heading">IMPLEMENTATION EXPERIENCE AT ZEMOSO TECHNOLOGIES:</p>
-			<hr class="underline_3">
-			<div id="project" class="project">
-				
-				<div class="project_block">
-					<div>
-						<p class="project_name">Project Name:</p>
-						<p class="project_name_1"><%=projects.name[i]%></p>
-					</div>
-				
-					<div class="side-heading">
-						<p>Description:</p>
-					</div>
-					<div class="project_content">
-						<p><%=projects.description[i]%></p>
-					</div>
+					<%}}}
+					else{%>
+		<div class="page">
+			<div class="header">
+				<img class="logo" src="./images/logo.png"/>
+				<a class="url">www.zemosolabs.com</a>
+			</div>
+			<div class="body">					
+				<p class="heading">IMPLEMENTATION EXPERIENCE AT ZEMOSO TECHNOLOGIES:</p>
+				<hr class="underline_3">
+				<div id="project" class="project">
+					<div class="project_block">
+						<div>
+							<p class="project_name">Project Name:</p>
+							<p class="project_name_1"><%=projects.name%></p>
+						</div>
+					
+						<div class="side-heading">
+							<p>Description:</p>
+						</div>
+						<div class="project_content">
+							<% var projects_description = projects.description.split("\r\n");
+							for(var j=0;j<projects_description.length;j++){
+								if(projects_description[j].length>0){%>
+							<p><%=projects_description[j]%></p><%}}%>
+						</div>
 
-					<div class="side-heading">
-						<p>Approach:</p>
-					</div>
-					<div class="project_content">
-						<p><%=projects.approach[i]%></p>
+						<div class="side-heading">
+							<p>Approach:</p>
+						</div>
+						<div class="project_content">
+							<% var projects_description = projects.approach.split("\r\n");
+							for(var j=0;j<projects_description.length;j++){
+								if(projects_description[j].length>0){%>
+							<p><%=projects_description[j]%></p><%}}%>
+						</div>
+						
+						<div class="side-heading">
+							<p>Technologies:</p>
+						</div>	
+						<div class="project_content project_images">
+							<% for(var j=0;j<proj_images[0].length;j++){%>
+
+							<img class="project_image" src=<%="./images/full_stack/"+proj_images[0][j]%>></img>
+
+							<%}%>
+						</div>
+						<div class="side-heading">
+							<p>Contribution:</p>
+						</div>
+						<div class="project_content">
+							<% var projects_description = projects.contribution.split("\r\n");
+							for(var j=0;j<projects_description.length;j++){
+								if(projects_description[j].length>0){%>
+							<p><%=projects_description[j]%></p><%}}%>
+						</div>
+						<div class="side-heading">
+							<p>Duration:</p>
+						</div>
+						<div class="project_content">
+							<p><%=projects.duration%></p>
+						</div>
+							
 					</div>
 					
-					<div class="side-heading">
-						<p>Technologies:</p>
-					</div>	
-					<div class="project_images">
-						<% for(var j=0;j<proj_images[i].length;j++){%>
-
-						<img class="project_image" src=<%="./images/full_stack/"+proj_images[i][j]%>></img>
-
-						<%}%>
-					</div>
-					<div class="side-heading">
-						<p>Contribution:</p>
-					</div>
-					<div class="project_content">
-						<p><%=projects.contribution[i]%></p>
-					</div>
-					<div class="side-heading">
-						<p>Duration:</p>
-					</div>
-					<div class="project_content">
-						<p><%=projects.duration[i]%></p>
-					</div>
-						
 				</div>
 			</div>
 		</div>
-	</div>
-				<%}}}
-				else{%>
-	<div class="page">
-		<div class="header">
-			<img class="logo" src="./images/logo.png"/>
-			<a class="url">www.zemosolabs.com</a>
+			<%}}%>
+			<%if(prior_projects.name.length>0){
+			if(prior_projects.name.constructor===Array){ 
+						for(var i=0;i<prior_projects.name.length;i++){
+							if(prior_projects.name[i].length>0){%>
+		<div class="page">
+			<div class="header">
+				<img class="logo" src="./images/logo.png"/>
+				<a class="url">www.zemosolabs.com</a>
+			</div>
+			<div class="body">					
+				<p class="heading">SOME PRIOR IMPLEMENTATION EXPERIENCE:</p>
+				<hr class="underline_3">
+				<div id="project" class="project">
+					
+					<div class="project_block">
+						<div>
+							<p class="project_name">Project Name:</p>
+							<p class="project_name_1"><%=prior_projects.name[i]%></p>
+						</div>
+					
+						<div class="side-heading">
+							<p>Description:</p>
+						</div>
+						<div class="project_content">
+							<% var prior_projects_description = prior_projects.description[i].split("\r\n");
+							for(var j=0;j<prior_projects_description.length;j++){
+								if(prior_projects_description[j].length>0){%>
+							<p><%=prior_projects_description[j]%></p><%}}%>
+						</div>
+
+						<div class="side-heading">
+							<p>Approach:</p>
+						</div>
+						<div class="project_content">
+							<% var prior_projects_description = prior_projects.approach[i].split("\r\n");
+							for(var j=0;j<prior_projects_description.length;j++){
+								if(prior_projects_description[j].length>0){%>
+							<p><%=prior_projects_description[j]%></p><%}}%>
+						</div>
+						
+						<div class="side-heading">
+							<p>Technologies:</p>
+						</div>	
+						<div class="project_content project_images">
+							<% for(var j=0;j<prior_proj_images[i].length;j++){%>
+
+							<img class="project_image" src=<%="./images/full_stack/"+prior_proj_images[i][j]%>></img>
+
+							<%}%>
+						</div>
+						<div class="side-heading">
+							<p>Contribution:</p>
+						</div>
+						<div class="project_content">
+							<% var prior_projects_description = prior_projects.contribution[i].split("\r\n");
+							for(var j=0;j<prior_projects_description.length;j++){
+								if(prior_projects_description[j].length>0){%>
+							<p><%=prior_projects_description[j]%></p><%}}%>
+						</div>
+						<div class="side-heading">
+							<p>Duration:</p>
+						</div>
+						<div class="project_content">
+							<p><%=prior_projects.duration[i]%></p>
+						</div>
+							
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="body">					
-			<p class="heading">IMPLEMENTATION EXPERIENCE AT ZEMOSO TECHNOLOGIES:</p>
-			<hr class="underline_3">
-			<div id="project" class="project">
-				<div class="project_block">
-					<div>
-						<p class="project_name">Project Name:</p>
-						<p class="project_name_1"><%=projects.name%></p>
-					</div>
-				
-					<div class="side-heading">
-						<p>Description:</p>
-					</div>
-					<div class="project_content">
-						<p><%=projects.description%></p>
+					<%}}}
+					else{%>
+		<div class="page">
+			<div class="header">
+				<img class="logo" src="./images/logo.png"/>
+				<a class="url">www.zemosolabs.com</a>
+			</div>
+			<div class="body">					
+				<p class="heading">SOME PRIOR EXPERIENCE:</p>
+				<hr class="underline_3">
+				<div id="project" class="project">
+					<div class="project_block">
+						<div>
+							<p class="project_name">Project Name:</p>
+							<p class="project_name_1"><%=prior_projects.name%></p>
+						</div>
+					
+						<div class="side-heading">
+							<p>Description:</p>
+						</div>
+						<div class="project_content">
+							<% var prior_projects_description = prior_projects.description.split("\r\n");
+							for(var j=0;j<prior_projects_description.length;j++){
+								if(prior_projects_description[j].length>0){%>
+							<p><%=prior_projects_description[j]%></p><%}}%>
+						</div>
+						<div class="side-heading">
+							<p>Approach:</p>
+						</div>
+						<div class="project_content">
+							<% var prior_projects_description = prior_projects.approach.split("\r\n");
+							for(var j=0;j<prior_projects_description.length;j++){
+								if(prior_projects_description[j].length>0){%>
+							<p><%=prior_projects_description[j]%></p><%}}%>
+						</div>
+						<div class="side-heading">
+							<p>Technologies:</p>
+						</div>	
+						<div class="project_content project_images">
+							<% for(var j=0;j<prior_proj_images[0].length;j++){%>
+
+							<img class="project_image" src=<%="./images/full_stack/"+prior_proj_images[0][j]%>></img>
+
+							<%}%>
+						</div>
+						<div class="side-heading">
+							<p>Contribution:</p>
+						</div>
+						<div class="project_content">
+							<% var prior_projects_description = prior_projects.contribution.split("\r\n");
+							for(var j=0;j<prior_projects_description.length;j++){
+								if(prior_projects_description[j].length>0){%>
+							<p><%=prior_projects_description[j]%></p><%}}%>
+							<p><%=prior_projects.contribution%></p>
+						</div>
+						<div class="side-heading">
+							<p>Duration:</p>
+						</div>
+						<div class="project_content">
+							<p><%=prior_projects.duration%></p>
+						</div>
+							
 					</div>
 					
-					<div class="side-heading">
-						<p>Technologies:</p>
-					</div>	
-					<div class="project_images">
-						<% for(var j=0;j<proj_images[0].length;j++){%>
-
-						<img class="project_image" src=<%="./images/full_stack/"+proj_images[0][j]%>></img>
-
-						<%}%>
-					</div>
-					</div>
-					<div class="side-heading">
-						<p>Contribution:</p>
-					</div>
-					<div class="project_content">
-						<p><%=projects.contribution%></p>
-					</div>
-					<div class="side-heading">
-						<p>Duration:</p>
-					</div>
-					<div class="project_content">
-						<p><%=projects.duration%></p>
-					</div>
-						
-				</div>
-				
-			</div>
-		</div>
-		</div>
-		<%}}%>
-		<%if(prior_projects.name.length>0){
-		if(prior_projects.name.constructor===Array){ 
-					for(var i=0;i<prior_projects.name.length;i++){
-						if(prior_projects.name[i].length>0){%>
-	<div class="page">
-		<div class="header">
-			<img class="logo" src="./images/logo.png"/>
-			<a class="url">www.zemosolabs.com</a>
-		</div>
-		<div class="body">					
-			<p class="heading">SOME PRIOR IMPLEMENTATION EXPERIENCE:</p>
-			<hr class="underline_3">
-			<div id="project" class="project">
-				
-				<div class="project_block">
-					<div>
-						<p class="project_name">Project Name:</p>
-						<p class="project_name_1"><%=prior_projects.name[i]%></p>
-					</div>
-				
-					<div class="side-heading">
-						<p>Description:</p>
-					</div>
-					<div class="project_content">
-						<p><%=prior_projects.description[i]%></p>
-					</div>
-
-					<div class="side-heading">
-						<p>Approach:</p>
-					</div>
-					<div class="project_content">
-						<p><%=prior_projects.approach[i]%></p>
-					</div>
-					
-					<div class="side-heading">
-						<p>Technologies:</p>
-					</div>	
-					<div class="project_images">
-						<% for(var j=0;j<prio_proj_images[i].length;j++){%>
-
-						<img class="project_image" src=<%="./images/full_stack/"+proj_images[i][j]%>></img>
-
-						<%}%>
-					</div>
-					<div class="side-heading">
-						<p>Contribution:</p>
-					</div>
-					<div class="project_content">
-						<p><%=prior_projects.contribution[i]%></p>
-					</div>
-					<div class="side-heading">
-						<p>Duration:</p>
-					</div>
-					<div class="project_content">
-						<p><%=prior_projects.duration[i]%></p>
-					</div>
-						
 				</div>
 			</div>
-		</div>
-	</div>
-				<%}}}
-				else{%>
-	<div class="page">
-		<div class="header">
-			<img class="logo" src="./images/logo.png"/>
-			<a class="url">www.zemosolabs.com</a>
-		</div>
-		<div class="body_page2">					
-			<p class="heading">SOME PRIOR EXPERIENCE:</p>
-			<hr class="underline_3">
-			<div id="project" class="project">
-				<div class="project_block">
-					<div>
-						<p class="project_name">Project Name:</p>
-						<p class="project_name_1"><%=prior_projects.name%></p>
-					</div>
-				
-					<div class="side-heading">
-						<p>Description:</p>
-					</div>
-					<div class="project_content">
-						<p><%=prior_projects.description%></p>
-					</div>
-					
-					<div class="side-heading">
-						<p>Technologies:</p>
-					</div>	
-					<div class="project_images">
-						<% for(var j=0;j<prior_proj_images[0].length;j++){%>
-
-						<img class="project_image" src=<%="./images/full_stack/"+prior_proj_images[0][j]%>></img>
-
-						<%}%>
-					</div>
-					<div class="side-heading">
-						<p>Contribution:</p>
-					</div>
-					<div class="project_content">
-						<p><%=prior_projects.contribution%></p>
-					</div>
-					<div class="side-heading">
-						<p>Duration:</p>
-					</div>
-					<div class="project_content">
-						<p><%=prior_projects.duration%></p>
-					</div>
-						
-				</div>
-				
 			</div>
+			<%}}%>	
 		</div>
-		</div>
-		<%}}%>	
 	</div>
 </body>
 </html>

@@ -111,6 +111,7 @@ module.exports = (req, res) => {
 					technologies_images:technologies_images,
 					server_side_images:server_side_images,
 					front_end_images:front_end_images,
-					proj_images
+					proj_images,
+					prior_proj_images
 	})
 };
