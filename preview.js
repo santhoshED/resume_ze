@@ -1,10 +1,44 @@
 'use strict';
-const database = require('./form.js');
+const database = require('./database.js');
 
 module.exports = (req, res) => {
 	const info = req.body;
-	console.log(info.projects);
 	const databases = info.databases || "";
+
+	var proj_images = new Array();
+
+	if(info.proj){
+		for(var i=0;i<info.proj.length;i++){
+			var temp = new Array;
+			if(info.proj[i].constructor === Array){
+				for(var j=0;j<info.proj[i].length;j++)
+					temp[j]=database.TECHNOLOGIES[info.proj[i][j]];
+			}
+			else{
+				temp[0]=database.TECHNOLOGIES[info.proj[i]]
+			}
+			proj_images[i]=temp;
+			
+		}
+		
+
+	}
+	var prior_proj_images = new Array();
+
+	if(info.prior_proj){
+		for(var i=0;i<info.prior_proj.length;i++){
+			var temp = new Array;
+			if(info.prior_proj[i].constructor === Array){
+				for(var j=0;j<info.prior_proj[i].length;j++)
+					temp[j]=database.TECHNOLOGIES[info.prior_proj[i][j]];
+			}
+			else{
+				temp[0]=database.TECHNOLOGIES[info.prior_proj[i]]
+			}
+			prior_proj_images[i]=temp;	
+		}
+	}
+
 	var databases_images = new Array();
 
 	if(databases.constructor === Array){
@@ -76,6 +110,7 @@ module.exports = (req, res) => {
 					databases_images:databases_images,
 					technologies_images:technologies_images,
 					server_side_images:server_side_images,
-					front_end_images:front_end_images
+					front_end_images:front_end_images,
+					proj_images
 	})
 };

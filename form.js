@@ -10,12 +10,12 @@ const database = {
 		"Indian Institute of Technology Kharagpur":"IIT_KGP_Logo.png",
 		"Indian Institute of Technology Kanpur":"IIT_Kanpur_Logo.png",
 		"Indian Institute of Technology Madras":"IIT_Madras_Logo.png",
-		"ISM Dhanbad":"ISMDhanbadLogo.png",
-		"JNTU Hyderabad":"JNTU_Logo.jpg",
-		"IIIT Hyderabad":"Logo_IIIT_Hyd.jpg",
+		"Indian School of Mines Dhanbad":"ISMDhanbadLogo.png",
+		"Jawaharlal Nehru Technological University Hyderabad":"JNTU_Logo.jpg",
+		"International Institute of Information Technology Hyderabad":"Logo_IIIT_Hyd.jpg",
 		"Mahatma Gandhi University":"Mahatma_Gandhi_University_logo.GIF",
 		"University of Sydney":"Univ_of_Sydney_logo.png",
-		"K L University":"logo_ K_L_Univ.png"
+		"Koneru Lakshmaiah University":"logo_K_L_Univ.png"
 	}, 
 	"TECHNOLOGIES":{
 		"Airflow":"Airflow_WT.png",
@@ -133,7 +133,8 @@ const database = {
 	}
 };
 
-module.exports = database;
+var proj = 1;
+var prior_proj= 1;
 
 function renderUniversities(){
 	const universities = Object.keys(database.UNIVERSITIES);
@@ -242,7 +243,6 @@ function addProjectBlock(){
 									class="form-control" 
 									type="text" 
 									name="projects[][description]" 
-									maxlength="600" 
 									rows="6"></textarea>
 							</div>
 							<div class="input-group project-group">
@@ -251,7 +251,6 @@ function addProjectBlock(){
 									class="form-control" 
 									type="text" 
 									name="projects[][approach]" 
-									maxlength="500" 
 									rows="5"></textarea>
 							</div>
 							<div class="input-group project-group">
@@ -259,8 +258,7 @@ function addProjectBlock(){
 								<textarea 
 									class="form-control" 
 									type="text" 
-									name="projects[][contribution]" 
-									maxlength="300" 
+									name="projects[][contribution]"  
 									rows="3"></textarea>
 							</div>
 							<div class="input-group project-group">
@@ -284,7 +282,7 @@ function addProjectBlock(){
 	selectelem.setAttribute("multiple","true");
 	selectelem.setAttribute("title","Technologies");
 	selectelem.setAttribute("data-live-search","true");
-	selectelem.setAttribute("name","projects[[]][technologies]");
+	selectelem.setAttribute("name","proj["+(proj)+"]");
 	
 	const full_stack = Object.keys(database.TECHNOLOGIES).sort();
 	for(var i=0;i<full_stack.length;i++){
@@ -302,6 +300,7 @@ function addProjectBlock(){
 	document.getElementById('project').appendChild(node);
 
 	$('.selectpicker').selectpicker('render');
+	proj++;
 }
 
 function addPriorProjectBlock(){
@@ -319,8 +318,7 @@ function addPriorProjectBlock(){
 								<textarea 
 									class="form-control" 
 									type="text" 
-									name="prior_projects[][description]" 
-									maxlength="600" 
+									name="prior_projects[][description]"  
 									rows="6"></textarea>
 							</div>
 							<div class="input-group project-group">
@@ -328,8 +326,7 @@ function addPriorProjectBlock(){
 								<textarea 
 									class="form-control" 
 									type="text" 
-									name="prior_projects[][approach]" 
-									maxlength="500" 
+									name="prior_projects[][approach]"  
 									rows="5"></textarea>
 							</div>
 							<div class="input-group project-group">
@@ -337,8 +334,7 @@ function addPriorProjectBlock(){
 								<textarea 
 									class="form-control" 
 									type="text" 
-									name="prior_projects[][contribution]" 
-									maxlength="300" 
+									name="prior_projects[][contribution]"  
 									rows="3"></textarea>
 							</div>
 							<div class="input-group project-group">
@@ -362,7 +358,7 @@ function addPriorProjectBlock(){
 	selectelem.setAttribute("multiple","true");
 	selectelem.setAttribute("title","Technologies");
 	selectelem.setAttribute("data-live-search","true");
-	selectelem.setAttribute("name","prior_projects[[]][technologies]");
+	selectelem.setAttribute("name",`prior_proj[${++prior_proj}]`);
 	
 	const full_stack = Object.keys(database.TECHNOLOGIES).sort();
 	for(var i=0;i<full_stack.length;i++){
@@ -380,4 +376,5 @@ function addPriorProjectBlock(){
 	document.getElementById('prior_project').appendChild(node);
 
 	$('.selectpicker').selectpicker('render');
+	prior_proj++;
 }
