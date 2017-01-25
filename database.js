@@ -38,6 +38,8 @@ const database = {
 		 "PostgreSQL":"PostgreSQL_WT.png",
 		 "Python Pandas":"python_pandas_WT.png",
 		 "R ":"R.png",
+		 "Java":"java_WT.jpg",
+		 "Google Cloud":"google-cloud_WT.png",
 		 "Teradata":"TERADATA_WT.png",
 		 "Yarn":"Yarn_WT.png",
 		"Active Admin":"Active_Admin_WT.png",
