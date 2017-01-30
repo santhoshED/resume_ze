@@ -14,16 +14,16 @@ body{
 }
 	.indexpage{
 		width: 100%;
-		height:70.5315em; #72.8125em
+		min-height:70.5315em; #72.8125em
 		page-break-before: none;
-  		page-break-after: none;
+  		page-break-after: auto;
   		page-break-inside: avoid;
 	}
 	.page{
 		width:100%;
-		height:71.0315em; #73.3125em
-		page-break-before: none;
-  		page-break-after: none;
+		min-height:71.0315em; #73.3125em
+		page-break-before: always;
+  		page-break-after: auto;
   		page-break-inside: avoid;
 	}
 		.header{
@@ -194,7 +194,7 @@ body{
 				padding-right: 0.75em;
 			}
 			.vector-image_1{
-				margin:0.55em 0em !important;
+				margin:0.25em 0em !important;
 				padding-right: 0.75em;
 			}
 
@@ -249,11 +249,13 @@ body{
 		  	font-weight: 300;
 		  	color: #666666;
 		  	margin-top: 0.25em;
+		  	page-break-inside: avoid
 		}
 		.project_images{
 			display:flex;
 			flex-wrap:wrap;
 			margin-bottom: -0.25em;
+			page-break-inside: avoid;
 		}
 			.project_image{
 				height:3.875em;

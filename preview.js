@@ -1,5 +1,5 @@
 'use strict';
-const database = require('./database.js');
+const database = require('./scripts/constants/masterdb.js');
 
 module.exports = (req, res) => {
 	const info = req.body;

@@ -16,7 +16,7 @@ const preview = require('./preview.js');
 
 server.get('/',(req,res)=>{res.sendFile(__dirname +'/form.html')});
 
-server.get('/form.js',(req,res)=>{res.sendFile(__dirname + '/form.js')});	
+server.get('/form.js',(req,res)=>{res.sendFile(__dirname + '/form.js')});		
 
 
 server.post('/preview', preview);
