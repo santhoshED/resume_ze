@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "basic-auth": "^1.1.0",
     "body-parser": "^1.16.0",
     "bootstrap-select": "^1.12.1",
     "ejs": "^2.5.5",

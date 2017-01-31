@@ -14,17 +14,13 @@ body{
 }
 	.indexpage{
 		width: 100%;
-		min-height:70.5315em; #72.8125em
+		/*min-height: 72.8125em; #70.5315em;*/
 		page-break-before: none;
-  		page-break-after: auto;
-  		page-break-inside: avoid;
 	}
 	.page{
 		width:100%;
-		min-height:71.0315em; #73.3125em
+		/*min-height: 73.3125em; #71.0315em; */
 		page-break-before: always;
-  		page-break-after: auto;
-  		page-break-inside: avoid;
 	}
 		.header{
 			display:flex;
@@ -228,6 +224,7 @@ body{
 		margin-bottom: 2.5em;
 		display: flex;
 		flex-direction:column;
+		position: relative;
 	}
 		.project_name,.project_name_1{
 		  	font-size: 1em;
@@ -249,13 +246,13 @@ body{
 		  	font-weight: 300;
 		  	color: #666666;
 		  	margin-top: 0.25em;
-		  	page-break-inside: avoid
 		}
 		.project_images{
 			display:flex;
 			flex-wrap:wrap;
 			margin-bottom: -0.25em;
-			page-break-inside: avoid;
+			page-break-inside: avoid!important;
+			position: relative!important;
 		}
 			.project_image{
 				height:3.875em;

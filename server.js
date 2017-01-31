@@ -1,6 +1,26 @@
 'use strict';
 const express = require ('express');
 const server = express();
+var basicAuth = require('basic-auth');
+
+var auth = function (req, res, next) {
+  function unauthorized(res) {
+    res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
+    return res.send(401);
+  };
+
+  var user = basicAuth(req);
+
+  if (!user || !user.name || !user.pass) {
+    return unauthorized(res);
+  };
+
+  if (user.name === 'zemoso' && user.pass === 'zemoso123') {
+    return next();
+  } else {
+    return unauthorized(res);
+  };
+};
 
 const bodyParser= require('body-parser');
 server.use(bodyParser.urlencoded({extended: true}));
@@ -14,7 +34,7 @@ const preview = require('./preview.js');
 
 
 
-server.get('/',(req,res)=>{res.sendFile(__dirname +'/form.html')});
+server.get('/',auth,(req,res)=>{res.sendFile(__dirname +'/form.html')});
 
 server.get('/form.js',(req,res)=>{res.sendFile(__dirname + '/form.js')});		
 
