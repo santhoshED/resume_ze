@@ -15,7 +15,7 @@ var auth = function (req, res, next) {
     return unauthorized(res);
   };
 
-  if (user.name === 'zemoso' && user.pass === 'zemoso123') {
+  if (user.name === 'resume_zemoso' && user.pass === 'osomez@semuser') {
     return next();
   } else {
     return unauthorized(res);
@@ -42,7 +42,7 @@ server.get('/form.js',(req,res)=>{res.sendFile(__dirname + '/form.js')});
 server.post('/preview', preview);
 
 
-server.listen(15969,() => {console.log('server has started on 15969')});
+server.listen(80,() => {console.log('server has started on 80')});
 
 
 

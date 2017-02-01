@@ -327,7 +327,7 @@
 								if(prior_projects_description[j].length>0){%>
 							<p><%=prior_projects_description[j]%></p><%}}%>
 						</div>
-
+						<% if(prior_projects.approach[i]){%>
 						<div class="side-heading">
 							<p>Approach:</p>
 						</div>
@@ -337,7 +337,7 @@
 								if(prior_projects_description[j].length>0){%>
 							<p><%=prior_projects_description[j]%></p><%}}%>
 						</div>
-						
+						<%}if(prior_proj_images[i]){%>
 						<div class="side-heading">
 							<p>Technologies:</p>
 						</div>	
@@ -348,6 +348,7 @@
 
 							<%}%>
 						</div>
+						<%}if(prior_projects.contribution[i]){%>
 						<div class="side-heading">
 							<p>Contribution:</p>
 						</div>
@@ -357,13 +358,14 @@
 								if(prior_projects_description[j].length>0){%>
 							<p><%=prior_projects_description[j]%></p><%}}%>
 						</div>
+						<%}if(prior_projects.duration[i]){%>
 						<div class="side-heading">
 							<p>Duration:</p>
 						</div>
 						<div class="project_content">
 							<p><%=prior_projects.duration[i]%></p>
 						</div>
-							
+							<%}%>
 					</div>
 				</div>
 			</div>
@@ -394,6 +396,7 @@
 								if(prior_projects_description[j].length>0){%>
 							<p><%=prior_projects_description[j]%></p><%}}%>
 						</div>
+						<%if(prior_projects.approach){%>
 						<div class="side-heading">
 							<p>Approach:</p>
 						</div>
@@ -403,6 +406,7 @@
 								if(prior_projects_description[j].length>0){%>
 							<p><%=prior_projects_description[j]%></p><%}}%>
 						</div>
+						<%}if(prior_proj_images[0]){%>
 						<div class="side-heading">
 							<p>Technologies:</p>
 						</div>	
@@ -413,6 +417,7 @@
 
 							<%}%>
 						</div>
+						<%}if(prior_projects.contribution){%>
 						<div class="side-heading">
 							<p>Contribution:</p>
 						</div>
@@ -423,13 +428,14 @@
 							<p><%=prior_projects_description[j]%></p><%}}%>
 							<p><%=prior_projects.contribution%></p>
 						</div>
+						<%}if(prior_projects.duration){%>
 						<div class="side-heading">
 							<p>Duration:</p>
 						</div>
 						<div class="project_content">
 							<p><%=prior_projects.duration%></p>
 						</div>
-							
+							<%}%>
 					</div>
 					
 				</div>

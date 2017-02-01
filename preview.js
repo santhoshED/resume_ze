@@ -19,9 +19,7 @@ module.exports = (req, res) => {
 			}
 			proj_images[i]=temp;
 			
-		}
-		
-
+		}	
 	}
 	var prior_proj_images = new Array();
 
