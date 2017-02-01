@@ -247,6 +247,7 @@
 				<hr class="underline_2">
 				<div id="project" class="project">
 					<div class="project_block">
+						<div id="project_block_top">
 						<div>
 							<p class="project_name">Project Name:</p>
 							<p class="project_name_1"><%=projects.name%></p>
@@ -271,12 +272,14 @@
 								if(projects_description[j].length>0){%>
 							<p><%=projects_description[j]%></p><%}}%>
 						</div>
+						</div>
+					<div id="project_block_bottom">
 						<div id="project_im">
 						<div class="side-heading">
 							<p>Technologies:</p>
 						</div>
 						
-						<div id="project_im" class="project_content project_images">
+						<div class="project_content project_images">
 							<% for(var j=0;j<proj_images[0].length;j++){%>
 
 							<img class="project_image" src=<%="./images/full_stack/"+proj_images[0][j]%>></img>
@@ -298,6 +301,7 @@
 						</div>
 						<div class="project_content">
 							<p><%=projects.duration%></p>
+						</div>
 						</div>
 						</div>	
 					</div>
@@ -321,6 +325,7 @@
 				<div id="project" class="project">
 					
 					<div class="project_block">
+					<div id="project_block_top">
 						<div>
 							<p class="project_name">Project Name:</p>
 							<p class="project_name_1"><%=prior_projects.name[i]%></p>
@@ -346,6 +351,8 @@
 							<p><%=prior_projects_description[j]%></p><%}}%>
 						</div>
 						<%}if(prior_proj_images[i]){%>
+					</div>
+						<div id="project_block_bottom">
 						<div id="project_im">
 						<div class="side-heading">
 							<p>Technologies:</p>
@@ -377,6 +384,7 @@
 							<%}%>
 						</div>
 					</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -392,6 +400,7 @@
 				<hr class="underline_3">
 				<div id="project" class="project">
 					<div class="project_block">
+						<div id="project_block_top">
 						<div>
 							<p class="project_name">Project Name:</p>
 							<p class="project_name_1"><%=prior_projects.name%></p>
@@ -417,6 +426,8 @@
 							<p><%=prior_projects_description[j]%></p><%}}%>
 						</div>
 						<%}if(prior_proj_images[0]){%>
+					</div>
+						<div id="project_block_bottom">
 						<div id="project_im">
 						<div class="side-heading">
 							<p>Technologies:</p>
@@ -449,6 +460,7 @@
 						
 							<%}%>
 						</div>
+					</div>
 					</div>
 					
 				</div>
