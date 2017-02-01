@@ -138,7 +138,7 @@ function addProjectBlock(){
 							</div>`;
 
 	var selectdiv = document.createElement("div");
-	selectdiv.className="input-group project-group";
+	selectdiv.className="form-group project-group";
 	
 	var side_heading = document.createElement("p");
 	side_heading.className = "side-heading";
@@ -214,7 +214,7 @@ function addPriorProjectBlock(){
 							</div>`;
 
 	var selectdiv = document.createElement("div");
-	selectdiv.className="input-group project-group";
+	selectdiv.className="form-group project-group";
 	
 	var side_heading = document.createElement("p");
 	side_heading.className = "side-heading";

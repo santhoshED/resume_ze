@@ -15,7 +15,6 @@ body{
 	.indexpage{
 		width: 100%;
 		/*min-height: 72.8125em; #70.5315em;*/
-		page-break-before: none;
 	}
 	.page{
 		width:100%;
@@ -219,6 +218,7 @@ body{
 .project{
 	display: flex;
 	flex-direction:column;
+	position: relative;
 }
 	.project_block{
 		margin-bottom: 2.5em;
@@ -251,10 +251,16 @@ body{
 			display:flex;
 			flex-wrap:wrap;
 			margin-bottom: -0.25em;
-			page-break-inside: avoid!important;
-			position: relative!important;
 		}
 			.project_image{
 				height:3.875em;
 				margin:0em 0.5em 0.25em 0em !important;
 			}
+@media print{
+    #project_im{
+        page-break-inside: auto!important;
+        position:relative!important;
+        display:inline-block;
+    }
+}
+
