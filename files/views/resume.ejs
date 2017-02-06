@@ -2,11 +2,14 @@
 <html>
 <head>
 	<title>RESUME</title>
-	<link rel="stylesheet" type="text/css" href="./css/resume.css">
-	
+	<link rel="stylesheet" type="text/css" href="./files/css/resume.css">
+	<script type="text/javascript" src="./files/javascript/resume.js"></script>
 </head>
 <body>
 	<div class="wrapper">
+		<div id ="print">
+			<button class="print" onClick="handlePrint()">PRINT & SAVE</button>
+		</div>
 		<div class="indexpage">
 			<div class="header">
 				<img class="logo" src="./images/logo.png"/>
@@ -206,11 +209,12 @@
 							<p>Technologies:</p>
 						</div>	
 						<div class="project_content project_images">
-							<% for(var j=0;j<proj_images[i].length;j++){%>
+							<% for(var j=0;j<proj_images[i].length;j++){
+								if(proj_images[i][j]){%>
 
 							<img class="project_image" src=<%="./images/full_stack/"+proj_images[i][j]%>></img>
 
-							<%}%>
+							<%}}%>
 						</div>
 
 						<div class="side-heading">
@@ -280,11 +284,12 @@
 						</div>
 						
 						<div class="project_content project_images">
-							<% for(var j=0;j<proj_images[0].length;j++){%>
+							<% for(var j=0;j<proj_images[0].length;j++){
+								if(proj_images[0][j]){%>
 
 							<img class="project_image" src=<%="./images/full_stack/"+proj_images[0][j]%>></img>
 
-							<%}%>
+							<%}}%>
 						</div>
 					
 						<div class="side-heading">
@@ -358,11 +363,12 @@
 							<p>Technologies:</p>
 						</div>	
 						<div class="project_content project_images">
-							<% for(var j=0;j<prior_proj_images[i].length;j++){%>
+							<% for(var j=0;j<prior_proj_images[i].length;j++){
+								if(prior_proj_images[i][j]){%>
 
 							<img class="project_image" src=<%="./images/full_stack/"+prior_proj_images[i][j]%>></img>
 
-							<%}%>
+							<%}}%>
 						</div>
 						<%}if(prior_projects.contribution[i]){%>
 						<div class="side-heading">
@@ -433,11 +439,12 @@
 							<p>Technologies:</p>
 						</div>	
 						<div class="project_content project_images">
-							<% for(var j=0;j<prior_proj_images[0].length;j++){%>
+							<% for(var j=0;j<prior_proj_images[0].length;j++){
+								if(prior_proj_images[0][j]){%>
 
 							<img class="project_image" src=<%="./images/full_stack/"+prior_proj_images[0][j]%>></img>
 
-							<%}%>
+							<%}}%>
 						</div>
 						<%}if(prior_projects.contribution){%>
 						<div class="side-heading">
@@ -468,7 +475,7 @@
 			</div>
 			<%}}%>	
 		</div>
-		
+
 	</div>
 </body>
 </html>

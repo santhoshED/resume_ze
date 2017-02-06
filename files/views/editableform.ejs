@@ -1,0 +1,632 @@
+<!Doctype html>
+<html>
+<head>
+	<title>Resume</title>
+	<link rel="stylesheet" type="text/css" href="./files/css/form.css">
+
+	<link rel="stylesheet" type="text/css" href="./scripts/bootstrap.css">
+	<link rel="stylesheet" href="./scripts/bootstrap-select.min.css">
+
+	<script src="./scripts/jquery.min.js"></script>
+  	<script src="./scripts/bootstrap.min.js"></script>
+  	<script src="./scripts/bootstrap-select.min.js"></script>
+  	<script href="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>  	
+  	<script type="text/javascript"src="./scripts/constants/masterdb.js"></script>
+
+  	<script type="text/javascript" src="./files/javascript/form.js"></script>
+  	<script type="text/javascript" src="./files/javascript/editableform.js"></script>
+  	
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<img class="logo" src="./images/logo.png"/>
+			<a href="./zemosolabs" class="url">www.zemosolabs.com</a>
+		</div>
+		<div class="body">
+			<form  action="/preview" method="POST" target="_blank">
+				<div class ="employee_name input-group">
+					<input 
+						class="form-control" 
+						type="text" 
+						name="employee_name"
+						value="<%= employee_name%>"
+						placeholder="Employee Name"/>
+					<input
+						class="form-control employee_position" 
+						type="text" 
+						name="employee_position"
+						value="<%= employee_position%>"
+						placeholder="Current Designation"/>
+					<input 
+						class="form-control employee_location" 
+						type="text" 
+						name="employee_location"
+						value="<%= employee_location %>"
+						placeholder="Location"/>
+					<input 
+						class="form-control employee_id" 
+						type="text" 
+						name="employee_id"
+						value="<%= employee_id %>"
+						placeholder="Employee ID"
+						readonly/>
+				</div>
+				<div class="res_row">
+					<div class="res_col">
+						<p class="heading">SUMMARY</p>
+						<hr class="underline">
+						<div class="form-group">
+							<textarea 
+								class="form-control" 
+								type="text" 
+								name="summary"  
+								rows="12"><%=summary%></textarea>
+						</div> 
+					</div>
+					<div class="res_col_2">
+						<p class="heading">EDUCATION</p>
+						<hr class="underline_2">
+						<div id="education" class="education form-group">
+							<%if(college.name.constructor === Array){
+								for(var i=0;i<college.name.length;i++){
+								if(college.name[i].length>0){%>
+									<div class="education_block form-group">
+										<select
+											id="CollegeSelect_<%=i%>" 
+											class="selectpicker form-control education-group" 
+											name="college[][name]" 
+											title="College Name" 
+											data-live-search="true">  
+										</select>
+										<input 
+											class="form-control education-group" 
+											type="text" 
+											name="college[][degree]"
+											value="<%= college.degree[i]%>"
+											placeholder="Degree"/>
+										<input 
+											class="form-control education_year" 
+											type="text" 
+											name="college[][year]"
+											value="<%= college.year[i] %>"
+											placeholder="Graduation Year"/>
+									</div>
+									<script type="text/javascript">renderUniversitiesEdit('<%=college.name[i]%>',<%=i%>)</script>
+									<%}}}
+								else{%>
+									<div class="education_block form-group">
+										<select
+											id="CollegeSelect_0" 
+											class="selectpicker form-control education-group" 
+											name="college[][name]" 
+											title="College Name"
+											value = "<%=college.name%>" 
+											data-live-search="true">  
+										</select>
+										<input 
+											class="form-control education-group" 
+											type="text" 
+											name="college[][degree]"
+											value="<%= college.degree%>"
+											placeholder="Degree"/>
+										<input 
+											class="form-control education_year" 
+											type="text" 
+											name="college[][year]"
+											value="<%= college.year%>"
+											placeholder="Graduation Year"/>
+									</div>
+									<script type="text/javascript">renderUniversitiesEdit('<%=college.name%>',0)</script>
+									<%}%>
+
+						</div>
+						<button type="button" class="add btn btn-default" onClick="addCollegeBlock()">ADD</button>
+					</div>
+				</div>
+				<div class="res_row">
+					<div class="res_col">
+						<p class="heading">WORK EXPERIENCE</p>
+						<hr class="underline">
+						<div id="work_experience"class="form-group">
+						<% if(workex.designation.constructor === Array){ 
+							for(var i=0;i<workex.designation.length;i++){
+							if(workex.designation[i].length>0){%>
+							<div class="work_experience_block input-group form-group">
+								<input 
+									class="form-control work-group" 
+									type="text" 
+									name="workexperience[][designation]"
+									value="<%= workex.designation[i] %>"
+									placeholder="Designation"/>
+								<input 
+									class="form-control work-group" 
+									type="text" 
+									name="workexperience[][organisation]"
+									value="<%= workex.organisation[i] %>"
+									placeholder="Organisation Name"/>
+								<div class="input-group work-group">
+								  <input 
+								  	type="text" 
+								  	class="form-control"
+								  	name="workexperience[][from]"
+								  	value="<%= workex.from[i] %>" 
+								  	placeholder="Month, Year">
+								  <span class="input-group-addon">To</span>
+								  <input 
+								  	type="text" 
+								  	class="form-control"
+								  	name="workexperience[][to]"
+								  	value="<%= workex.to[i] %>" 
+								  	placeholder="Month, Year">
+								</div>
+								<input 
+									class="form-control" 
+									type="text" 
+									name="workexperience[][place]"
+									value="<%= workex.place[i] %>"
+									placeholder="City, Country"/>
+							</div>
+							<%}}}
+							else{%>
+							<div class="work_experience_block input-group form-group">
+								<input 
+									class="form-control work-group" 
+									type="text" 
+									name="workexperience[][designation]"
+									value="<%= workex.designation %>"
+									placeholder="Designation"/>
+								<input 
+									class="form-control work-group" 
+									type="text" 
+									name="workexperience[][organisation]"
+									value="<%= workex.organisation %>"
+									placeholder="Organisation Name"/>
+								<div class="input-group work-group">
+								  <input 
+								  	type="text" 
+								  	class="form-control"
+								  	name="workexperience[][from]"
+								  	value="<%= workex.from %>" 
+								  	placeholder="Month, Year">
+								  <span class="input-group-addon">To</span>
+								  <input 
+								  	type="text" 
+								  	class="form-control"
+								  	name="workexperience[][to]"
+								  	value="<%= workex.to %>" 
+								  	placeholder="Month, Year">
+								</div>
+								<input 
+									class="form-control" 
+									type="text" 
+									name="workexperience[][place]"
+									value="<%= workex.place %>"
+									placeholder="City, Country"/>
+							</div>
+							<%}%>	
+						</div>
+						<button type="button" class="add btn btn-default" onClick="addWorkBlock()">ADD</button>
+					</div>
+					<div class="res_col_2">
+						<p class="heading">SKILLS</p>
+						<hr class="underline_2">
+						<div class ="skills form-group">
+							<p class="skill_heading">Server Side:</p>
+							<select 
+								id="server_side"
+								class="selectpicker form-control" 
+								multiple 
+								data-live-search="true"
+								name="server_side">
+							</select>
+							<script type="text/javascript">renderskillsEdit('<%=server_side%>','server_side')</script>
+							<br>
+							<p class="skill_heading">Front End:</p>
+							<select
+								id="front_end" 
+								class="selectpicker form-control" 
+								multiple  
+								data-live-search="true"
+								name="front_end">
+							</select>
+							<script type="text/javascript">renderskillsEdit('<%=front_end%>','front_end')</script>
+							<br>
+							<p class="skill_heading">DataBases:</p>
+							<select 
+								id="databases"
+								class="selectpicker form-control" 
+								multiple 
+								data-live-search="true"
+								name="databases">
+							</select>
+							<script type="text/javascript">renderskillsEdit('<%=databases%>','databases')</script>
+							<br>
+							<p class="skill_heading">Architectures & Cloud Services:</p>
+							<select 
+								id="technologies"
+								class="selectpicker form-control" 
+								multiple  
+								data-live-search="true"
+								name="technologies">
+							</select>
+							<script type="text/javascript">renderskillsEdit('<%=technologies%>','technologies')</script>
+						</div>
+					</div>
+				</div>
+				<div class="res_row">
+					<div class="res_col_3">
+						<p class="heading">IMPLEMENTATION EXPERIENCE AT ZEMOSO TECHNOLOGIES</p>
+						<hr class="underline_3">
+						<div id="project" class="project form-group">
+						<%if(projects.name.length>0){
+							if(projects.name.constructor===Array){ 
+							for(var i=0;i<projects.name.length;i++){
+								if(projects.name[i].length>0){%>
+						<div id ='<%=i%>' class="form-group project_block">
+							<div class="input-group project-group">
+								<input 
+									class="form-control" 
+									type="text" 
+									name="projects[][name]"
+									value="<%=projects.name[i]%>"
+									placeholder="Project Name"/>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Description:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="projects[][description]"
+									rows="6"><%=projects.description[i]%></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Approach:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="projects[][approach]"
+									rows="5"><%=projects.approach[i]%></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Contribution:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="projects[][contribution]"
+									rows="3"><%=projects.contribution[i]%></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Duration:</p>
+								<input 
+								class="form-control" 
+								type="text" 
+								name="projects[][duration]"
+								value="<%=projects.duration[i]%>"
+								placeholder="Duration"/>
+							</div>
+							<div class="form-group project-group">
+								<p class="side-heading">Technologies:</p>
+								<select
+									id="proj_TechSelect_<%=i%>" 
+									class="selectpicker form-control" 
+									multiple 
+									title="Technologies" 
+									data-live-search="true"
+									name="proj[<%=i%>]">
+								</select>
+							</div>
+							<script type="text/javascript">renderTechnologiesEdit('<%=proj[i]%>','proj_TechSelect_<%=i%>')</script>
+						</div>
+						
+						<%}}}
+						else{%>
+						<div class="form-group project_block">
+							<div class="input-group project-group">
+								<input 
+									class="form-control" 
+									type="text" 
+									name="projects[][name]"
+									value="<%=projects.name%>"
+									placeholder="Project Name"/>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Description:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="projects[][description]"
+									rows="6"><%=projects.description%></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Approach:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="projects[][approach]"
+									rows="5"><%=projects.approach%></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Contribution:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="projects[][contribution]"
+									rows="3"><%=projects.contribution%></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Duration:</p>
+								<input 
+								class="form-control" 
+								type="text" 
+								name="projects[][duration]"
+								value="<%=projects.duration%>"
+								placeholder="Duration"/>
+							</div>
+							<div class="form-group project-group">
+								<p class="side-heading">Technologies:</p>
+								<select
+									id="proj_TechSelect_0" 
+									class="selectpicker form-control" 
+									multiple 
+									title="Technologies" 
+									data-live-search="true"
+									name="proj[0]">
+								</select>
+							</div>
+							<script type="text/javascript">renderTechnologiesEdit('<%=proj[0]%>','proj_TechSelect_0')</script>
+						</div>
+						
+						<%}}else{%>
+						<div id ="0" class="form-group project_block">
+							<div class="input-group project-group">
+								<input 
+									class="form-control" 
+									type="text" 
+									name="projects[][name]"
+									placeholder="Project Name"/>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Description:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="projects[][description]" 
+									rows="6"></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Approach:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="projects[][approach]" 
+									rows="5"></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Contribution:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="projects[][contribution]" 
+									rows="3"></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Duration:</p>
+								<input 
+								class="form-control" 
+								type="text" 
+								name="projects[][duration]"
+								placeholder="Duration"/>
+							</div>
+							<div class="form-group project-group">
+								<p class="side-heading">Technologies:</p>
+								<select 
+									class="selectpicker form-control skillSelect" 
+									multiple 
+									title="Technologies" 
+									data-live-search="true"
+									name="proj[0]">
+								</select>
+								<option class="tech_hack" selected></option>
+							</div>
+						</div>
+						<%}%>
+						</div>
+						<button type="button" class="add btn btn-default" onClick="getlastid()">ADD</button>
+					</div>	
+				</div>
+            	<div class="res_row">
+					<div class="res_col_3">
+						<p class="heading">SOME PRIOR IMPLEMENTATION EXPERIENCE</p>
+						<hr class="underline_3">
+						<div id="prior_project" class="project">
+						<%if(prior_projects.name.length>0){
+							if(prior_projects.name.constructor===Array){ 
+							for(var i=0;i<prior_projects.name.length;i++){
+								if(prior_projects.name[i].length>0){%>
+						<div id='<%=i%>'class="form-group project_block">
+							<div class="input-group project-group">
+								<input 
+									class="form-control" 
+									type="text" 
+									name="prior_projects[][name]"
+									value="<%=prior_projects.name[i]%>"
+									placeholder="Project Name"/>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Description:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="prior_projects[][description]"  
+									rows="6"><%=prior_projects.description[i]%></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Approach:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="prior_projects[][approach]"  
+									rows="5"><%=prior_projects.approach[i]%></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Contribution:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="prior_projects[][contribution]"
+									rows="3"><%=prior_projects.contribution[i]%></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Duration:</p>
+								<input 
+								class="form-control" 
+								type="text" 
+								name="prior_projects[][duration]"
+								value="<%=prior_projects.duration[i]%>"
+								placeholder="Duration"/>
+							</div>
+							<div class=" form-group project-group">
+								<p class="side-heading">Technologies:</p>
+								<select
+									id="prior_proj_TechSelect_<%=i%>" 
+									class="selectpicker form-control"
+									multiple 
+									title="Technologies" 
+									data-live-search="true"
+									name="prior_proj[<%=1%>]">
+								</select>
+							</div>
+							<script type="text/javascript">renderTechnologiesEdit('<%=prior_proj[i]%>','prior_proj_TechSelect_<%=i%>')</script>
+						</div>
+						
+						<%}}}
+						else{%>
+						<div id="0" class="form-group project_block">
+							<div class="input-group project-group">
+								<input 
+									class="form-control" 
+									type="text" 
+									name="prior_projects[][name]"
+									value="<%=prior_projects.name%>"
+									placeholder="Project Name"/>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Description:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="prior_projects[][description]"  
+									rows="6"><%=prior_projects.description%></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Approach:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="prior_projects[][approach]"  
+									rows="5"><%=prior_projects.approach%></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Contribution:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="prior_projects[][contribution]"
+									rows="3"><%=prior_projects.contribution%></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Duration:</p>
+								<input 
+								class="form-control" 
+								type="text" 
+								name="prior_projects[][duration]"
+								value="<%=prior_projects.duration%>"
+								placeholder="Duration"/>
+							</div>
+							<div class=" form-group project-group">
+								<p class="side-heading">Technologies:</p>
+								<select
+									id="prior_proj_TechSelect_0" 
+									class="selectpicker form-control"
+									multiple 
+									title="Technologies" 
+									data-live-search="true"
+									name="prior_proj[0]">
+								</select>
+							</div>
+							<script type="text/javascript">renderTechnologiesEdit('<%=prior_proj[0]%>','prior_proj_TechSelect_0')</script>
+						</div>
+						
+						<%}}else{%>
+						<div id="0"class="form-group project_block">
+							<div class="input-group project-group">
+								<input 
+									class="form-control" 
+									type="text" 
+									name="prior_projects[][name]"
+									placeholder="Project Name"/>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Description:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="prior_projects[][description]"  
+									rows="6"></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Approach:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="prior_projects[][approach]"  
+									rows="5"></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Contribution:</p>
+								<textarea 
+									class="form-control" 
+									type="text" 
+									name="prior_projects[][contribution]"
+									rows="3"></textarea>
+							</div>
+							<div class="input-group project-group">
+								<p class="side-heading">Duration:</p>
+								<input 
+								class="form-control" 
+								type="text" 
+								name="prior_projects[][duration]"
+								placeholder="Duration"/>
+							</div>
+							<div class=" form-group project-group">
+								<p class="side-heading">Technologies:</p>
+								<select
+									class="selectpicker form-control skillSelect"
+									multiple 
+									title="Technologies" 
+									data-live-search="true"
+									name="prior_proj[0]">
+								</select>
+								<option selected class="tech_hack"></option>
+							</div>
+							<script type="text/javascript">renderSkills()</script>
+						</div>
+						
+						<%}%>
+						</div>
+						<button type="button" class="add btn btn-default" onClick="getlastid_prior()">ADD</button>
+					</div>	
+				</div>
+				<div class='form-group'>
+           		    <button class="btn btn-primary submit" type="submit">Preview</button>
+            	</div>
+            	
+			</form>
+				<div>
+		    	 	<button class="btn btn-danger delete" onClick="handleDelete('<%=employee_id%>')">Delete</button>
+            	</div>
+		</div>
+		</div>
+</body>
+</html>

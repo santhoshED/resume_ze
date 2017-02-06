@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Resume</title>
-	<link rel="stylesheet" type="text/css" href="./css/form.css">
+	<link rel="stylesheet" type="text/css" href="./files/css/form.css">
 
 	<link rel="stylesheet" type="text/css" href="./scripts/bootstrap.css">
 	<link rel="stylesheet" href="./scripts/bootstrap-select.min.css">
@@ -13,7 +13,7 @@
   	<script href="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>  	
   	<script type="text/javascript"src="./scripts/constants/masterdb.js"></script>
 
-  	<script type="text/javascript" src="./form.js"></script>
+  	<script type="text/javascript" src="./files/javascript/form.js"></script>
   	
 </head>
 <body>
@@ -40,6 +40,12 @@
 						type="text" 
 						name="employee_location"
 						placeholder="Location"/>
+					<input 
+						class="form-control employee_id" 
+						type="text" 
+						name="employee_id"
+						placeholder="Employee ID"
+						required/>
 				</div>
 				<div class="res_row">
 					<div class="res_col">
@@ -62,7 +68,8 @@
 									id="CollegeSelect" 
 									class="selectpicker form-control education-group" 
 									name="college[][name]" 
-									title="College Name" 
+									title="College Name"
+									required 
 									data-live-search="true">  
 								</select>
 								<input 
@@ -161,59 +168,60 @@
 						<p class="heading">IMPLEMENTATION EXPERIENCE AT ZEMOSO TECHNOLOGIES</p>
 						<hr class="underline_3">
 						<div id="project" class="project form-group">
-						<div class="form-group project_block">
-							<div class="input-group project-group">
-								<input 
+							<div id="0" class="form-group project_block">
+								<div class="input-group project-group">
+									<input 
+										class="form-control" 
+										type="text" 
+										name="projects[][name]"
+										placeholder="Project Name"/>
+								</div>
+								<div class="input-group project-group">
+									<p class="side-heading">Description:</p>
+									<textarea 
+										class="form-control" 
+										type="text" 
+										name="projects[][description]" 
+										rows="6"></textarea>
+								</div>
+								<div class="input-group project-group">
+									<p class="side-heading">Approach:</p>
+									<textarea 
+										class="form-control" 
+										type="text" 
+										name="projects[][approach]" 
+										rows="5"></textarea>
+								</div>
+								<div class="input-group project-group">
+									<p class="side-heading">Contribution:</p>
+									<textarea 
+										class="form-control" 
+										type="text" 
+										name="projects[][contribution]" 
+										rows="3"></textarea>
+								</div>
+								<div class="input-group project-group">
+									<p class="side-heading">Duration:</p>
+									<input 
 									class="form-control" 
 									type="text" 
-									name="projects[][name]"
-									placeholder="Project Name"/>
-							</div>
-							<div class="input-group project-group">
-								<p class="side-heading">Description:</p>
-								<textarea 
-									class="form-control" 
-									type="text" 
-									name="projects[][description]" 
-									rows="6"></textarea>
-							</div>
-							<div class="input-group project-group">
-								<p class="side-heading">Approach:</p>
-								<textarea 
-									class="form-control" 
-									type="text" 
-									name="projects[][approach]" 
-									rows="5"></textarea>
-							</div>
-							<div class="input-group project-group">
-								<p class="side-heading">Contribution:</p>
-								<textarea 
-									class="form-control" 
-									type="text" 
-									name="projects[][contribution]" 
-									rows="3"></textarea>
-							</div>
-							<div class="input-group project-group">
-								<p class="side-heading">Duration:</p>
-								<input 
-								class="form-control" 
-								type="text" 
-								name="projects[][duration]"
-								placeholder="Duration"/>
-							</div>
-							<div class="form-group project-group">
-								<p class="side-heading">Technologies:</p>
-								<select 
-									class="selectpicker form-control skillSelect" 
-									multiple 
-									title="Technologies" 
-									data-live-search="true"
-									name="proj[0]">
-								</select>
+									name="projects[][duration]"
+									placeholder="Duration"/>
+								</div>
+								<div class="form-group project-group">
+									<p class="side-heading">Technologies:</p>
+									<select 
+										class="selectpicker form-control skillSelect" 
+										multiple 
+										title="Technologies" 
+										data-live-search="true"
+										name="proj[0]">
+										<option class="tech_hack" selected></option>
+									</select>
+								</div>
 							</div>
 						</div>
-						</div>
-						<button type="button" class="add btn btn-default" onClick="addProjectBlock()">ADD</button>
+						<button type="button" class="add btn btn-default" onClick="getlastid()">ADD</button>
 					</div>	
 				</div>
             	<div class="res_row">
@@ -221,7 +229,7 @@
 						<p class="heading">SOME PRIOR IMPLEMENTATION EXPERIENCE</p>
 						<hr class="underline_3">
 						<div id="prior_project" class="project">
-						<div class="form-group project_block">
+						<div id="0" class="form-group project_block">
 							<div class="input-group project-group">
 								<input 
 									class="form-control" 
@@ -270,19 +278,20 @@
 									title="Technologies" 
 									data-live-search="true"
 									name="prior_proj[0]">
+									<option class="tech_hack" selected></option>
 								</select>
 							</div>
 						</div>
 						</div>
-						<button type="button" class="add btn btn-default" onClick="addPriorProjectBlock()">ADD</button>
+						<button type="button" class="add btn btn-default" onClick="getlastid_prior()">ADD</button>
 					</div>	
 				</div>
 				<div class='form-group'>
-           		    	 <button class="btn btn-primary submit" type="submit">Submit</button>
+           		    	 <button class="btn btn-primary submit" type="submit">Preview</button>
             	</div>
 			</form>
 		</div>
-		<script type="text/javascript">renderUniversities();renderSkills();renderProjectTechnologies()</script>
+		<script type="text/javascript">renderUniversities();renderSkills();</script>
 	</div>
 </body>
 </html>

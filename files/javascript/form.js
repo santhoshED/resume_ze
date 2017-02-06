@@ -1,8 +1,5 @@
 'use strict';
 
-var proj = 1;
-var prior_proj= 1;
-
 function renderUniversities(){
 	const universities = Object.keys(database.UNIVERSITIES);
 	for(var i=0;i<universities.length;i++){
@@ -16,13 +13,8 @@ function renderSkills(){
 		$(".skillSelect").append(`<option>${technologies[i]}</option>`);
 	}
 }
-function renderProjectTechnologies(){
-	const full_stack = Object.keys(database.TECHNOLOGIES).sort();
-	for(var i=0;i<full_stack.length;i++){
-		$("#fullStackSelect").append(`<option>${full_stack[i]}</option>`);
-		$("#prior_fullStackSelect").append(`<option>${full_stack[i]}</option>`);
-	};					
-}
+
+
 function addCollegeBlock(){
 	var node=document.createElement("div");
 	node.className= "education_block form-group";
@@ -57,7 +49,9 @@ function addCollegeBlock(){
 	$('.selectpicker').selectpicker('render');
 	renderUniversities();
 }
+
 function addWorkBlock(){
+
 	var node = document.createElement("div");
 	node.className="work_experience_block input-group form-group";
 	node.innerHTML += 
@@ -93,10 +87,23 @@ function addWorkBlock(){
 					</div>`;
 	document.getElementById('work_experience').appendChild(node);
 }
+function getlastid(){
+	var proj = document.getElementById("project").lastElementChild.id;
+	var p = parseInt(proj) + 1;
+	addProjectBlock(p);
+}
 
-function addProjectBlock(){
+function getlastid_prior(){
+	var proj = document.getElementById("prior_project").lastElementChild.id;
+	var p = parseInt(proj) + 1;
+	addPriorProjectBlock(p);
+}
+function addProjectBlock(proj){
+
 	var node = document.createElement("div");
+	node.setAttribute("id",proj);
 	node.className="form-group project_block";
+	
 	node.innerHTML += `<div class="input-group project-group">
 								<input 
 									class="form-control" 
@@ -150,7 +157,8 @@ function addProjectBlock(){
 	selectelem.setAttribute("title","Technologies");
 	selectelem.setAttribute("data-live-search","true");
 	selectelem.setAttribute("name","proj["+(proj)+"]");
-	
+	selectelem.innerHTML += `<option class="tech_hack" selected></option>`;
+
 	const full_stack = Object.keys(database.TECHNOLOGIES).sort();
 	for(var i=0;i<full_stack.length;i++){
 		var option = document.createElement("option");
@@ -167,11 +175,11 @@ function addProjectBlock(){
 	document.getElementById('project').appendChild(node);
 
 	$('.selectpicker').selectpicker('render');
-	proj++;
 }
 
-function addPriorProjectBlock(){
+function addPriorProjectBlock(prior_proj){
 	var node = document.createElement("div");
+	node.setAttribute("id",prior_proj);
 	node.className="form-group project_block";
 	node.innerHTML += `<div class="input-group project-group">
 								<input 
@@ -226,7 +234,8 @@ function addPriorProjectBlock(){
 	selectelem.setAttribute("title","Technologies");
 	selectelem.setAttribute("data-live-search","true");
 	selectelem.setAttribute("name",`prior_proj[${++prior_proj}]`);
-	
+	selectelem.innerHTML += `<option class="tech_hack" selected></option>`;
+
 	const full_stack = Object.keys(database.TECHNOLOGIES).sort();
 	for(var i=0;i<full_stack.length;i++){
 		var option = document.createElement("option");

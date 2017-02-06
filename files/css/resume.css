@@ -256,11 +256,41 @@ body{
 				height:3.875em;
 				margin:0em 0.5em 0.25em 0em !important;
 			}
+.print:hover{
+	color: #fff;
+    background-color: #286090;
+    border-color: #204d74;
+}
+#print{
+	display: flex;
+	justify-content:center;
+}
+.print{
+	color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    display: inline-block;
+    margin-top:2em;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
 @media print{
     #project_im{
         page-break-inside: auto!important;
         position:relative!important;
         display:inline-block;
+    }
+    #print{
+    	display:none;
     }
 }
 

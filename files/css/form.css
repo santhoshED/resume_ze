@@ -24,6 +24,8 @@
 	font-size: 18px;
 	color:#333333;
 	width:75%!important;
+	display:flex;
+	flex-direction:column;
 }
 .logo{
 	height:44px;
@@ -34,7 +36,12 @@
 	width:70%!important;
 }
 .employee_location{
+
 	width:50%!important;
+}
+.employee_id{
+	margin:5px 0px 5px 0px!important;
+	width:40%!important;
 }
 .body .res_row{
 	display:flex;
@@ -107,8 +114,9 @@
 .submit{
 	margin:25px 225px;
 }
-.check-mark{ 
-	
+.tech_hack{ 
+	display:none;
+	visibility: hidden;
 }
 .project-group{
 	margin:10px 0px;
