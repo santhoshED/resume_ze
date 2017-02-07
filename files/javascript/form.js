@@ -10,7 +10,7 @@ function renderSkills(){
 
 	const technologies = Object.keys(database.TECHNOLOGIES).sort();
 	for(var i=0;i<technologies.length;i++){
-		$(".skillSelect").append(`<option>${technologies[i]}</option>`);
+		$(".skillSelect").append(`<option value='${technologies[i]}'>${technologies[i]}</option>`);
 	}
 }
 
@@ -152,7 +152,7 @@ function addProjectBlock(proj){
 	side_heading.innerHTML= "Technologies:";
 
 	var selectelem = document.createElement("select");
-	selectelem.className="selectpicker form-control";
+	selectelem.className="multipleSelect form-control";
 	selectelem.setAttribute("multiple","true");
 	selectelem.setAttribute("title","Technologies");
 	selectelem.setAttribute("data-live-search","true");
@@ -163,6 +163,7 @@ function addProjectBlock(proj){
 	for(var i=0;i<full_stack.length;i++){
 		var option = document.createElement("option");
 		option.text = full_stack[i];
+		option.value = full_stack[i];
 		selectelem.add(option);
 	}
 
@@ -174,7 +175,8 @@ function addProjectBlock(proj){
 
 	document.getElementById('project').appendChild(node);
 
-	$('.selectpicker').selectpicker('render');
+	$('.multipleSelect').fastselect();
+	defaultOption();
 }
 
 function addPriorProjectBlock(prior_proj){
@@ -229,7 +231,7 @@ function addPriorProjectBlock(prior_proj){
 	side_heading.innerHTML= "Technologies:";
 
 	var selectelem = document.createElement("select");
-	selectelem.className="selectpicker form-control";
+	selectelem.className="multipleSelect form-control";
 	selectelem.setAttribute("multiple","true");
 	selectelem.setAttribute("title","Technologies");
 	selectelem.setAttribute("data-live-search","true");
@@ -251,6 +253,15 @@ function addPriorProjectBlock(prior_proj){
 
 	document.getElementById('prior_project').appendChild(node);
 
-	$('.selectpicker').selectpicker('render');
-	prior_proj++;
+	$('.multipleSelect').fastselect();
+	defaultOption();
+}
+
+function defaultOption(){
+	var nodes = document.getElementsByClassName('fstChoiceItem');
+	for(var i=0;i<nodes.length;i++){
+		if(nodes[i].getAttribute('data-text')==""){
+			nodes[i].setAttribute("style","display:none");
+		}
+	}
 }

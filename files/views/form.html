@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="./scripts/bootstrap.css">
 	<link rel="stylesheet" href="./scripts/bootstrap-select.min.css">
 
+	
 	<script src="./scripts/jquery.min.js"></script>
   	<script src="./scripts/bootstrap.min.js"></script>
   	<script src="./scripts/bootstrap-select.min.js"></script>
@@ -14,9 +15,28 @@
   	<script type="text/javascript"src="./scripts/constants/masterdb.js"></script>
 
   	<script type="text/javascript" src="./files/javascript/form.js"></script>
-  	
+
+
+
+	<link rel="stylesheet" href="./scripts/fastselect.min.css">
+	<script src="./scripts/fastselect.min.js"></script>
+
 </head>
 <body>
+	<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Zemoso</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Add New</a></li>
+                <li><a href="/resumes">Resumes</a></li>
+                <li><a href="/masterdb">Master DB</a></li>
+            </ul>
+        </div>
+    </div>
+	</nav>
 	<div class="wrapper">
 		<div class="header">
 			<img class="logo" src="./images/logo.png"/>
@@ -131,33 +151,30 @@
 						<div class ="skills form-group">
 							<p class="skill_heading">Server Side:</p>
 							<select 
-								class="selectpicker form-control skillSelect" 
+								class="multipleSelect form-control skillSelect" 
 								multiple 
-								data-live-search="true"
 								name="server_side">
+								...
 							</select>
 							<br>
 							<p class="skill_heading">Front End:</p>
 							<select 
-								class="selectpicker form-control skillSelect" 
+								class="multipleSelect form-control skillSelect" 
 								multiple  
-								data-live-search="true"
 								name="front_end">
 							</select>
 							<br>
 							<p class="skill_heading">DataBases:</p>
 							<select 
-								class="selectpicker form-control skillSelect" 
+								class="multipleSelect form-control skillSelect" 
 								multiple 
-								data-live-search="true"
 								name="databases">
 							</select>
 							<br>
 							<p class="skill_heading">Architectures & Cloud Services:</p>
 							<select 
-								class="selectpicker form-control skillSelect" 
+								class="multipleSelect form-control skillSelect" 
 								multiple  
-								data-live-search="true"
 								name="technologies">
 							</select>
 						</div>
@@ -211,10 +228,9 @@
 								<div class="form-group project-group">
 									<p class="side-heading">Technologies:</p>
 									<select 
-										class="selectpicker form-control skillSelect" 
+										class="multipleSelect form-control skillSelect" 
 										multiple 
-										title="Technologies" 
-										data-live-search="true"
+										placeHolder="Technologies" 
 										name="proj[0]">
 										<option class="tech_hack" selected></option>
 									</select>
@@ -273,10 +289,9 @@
 								<p class="side-heading">Technologies:</p>
 								<select
 									id="prior_fullStackSelect" 
-									class="selectpicker form-control skillSelect"
+									class="multipleSelect form-control skillSelect"
 									multiple 
-									title="Technologies" 
-									data-live-search="true"
+									placeHolder="Technologies" 
 									name="prior_proj[0]">
 									<option class="tech_hack" selected></option>
 								</select>
@@ -293,5 +308,6 @@
 		</div>
 		<script type="text/javascript">renderUniversities();renderSkills();</script>
 	</div>
+<script type="text/javascript">$('.multipleSelect').fastselect();defaultOption();</script>
 </body>
 </html>

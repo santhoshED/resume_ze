@@ -1,5 +1,5 @@
 .wrapper{
-	width: 597px;
+	width: 49.6em;
 	background-color: #ffffff;
 	border: 1px solid #cccccc ;
 	margin:0 auto;
@@ -108,11 +108,15 @@
 .work-group{
 	margin-bottom: 5px!important;
 }
+.fstElement{
+	font-size: 12px!important;
+	width:100%;
+}
 .add{
 	margin-top: 10px;
 }
 .submit{
-	margin:25px 225px;
+	margin:25px 275px;
 }
 .tech_hack{ 
 	display:none;
@@ -138,4 +142,12 @@
   	font-stretch: normal;
   	color: #333333;
   	margin-bottom: 3px;
+}
+.delete{
+	position: absolute;
+	margin-top: -49px;
+	margin-left: 23em;
+}
+.preview{
+	margin-left:16em;
 }

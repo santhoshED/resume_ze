@@ -31,10 +31,10 @@ function renderTechnologiesEdit(names,index){
 	const technologies = Object.keys(database.TECHNOLOGIES).sort();
 	for(var i=0;i<technologies.length;i++){
 		if(array_names.indexOf(technologies[i])>=0){
-			$(`#${index}`).append(`<option selected="selected">${technologies[i]}</option>`);
+			$(`#${index}`).append(`<option selected="selected" value="${technologies[i]}">${technologies[i]}</option>`);
 		}
 		else{
-			$(`#${index}`).append(`<option>${technologies[i]}</option>`);	
+			$(`#${index}`).append(`<option value="${technologies[i]}">${technologies[i]}</option>`);	
 		}
 		
 	}
@@ -46,10 +46,10 @@ function renderskillsEdit(names,index){
 	const technologies = Object.keys(database.TECHNOLOGIES).sort();
 	for(var i=0;i<technologies.length;i++){
 		if(array_names.indexOf(technologies[i])>=0){
-			$(`#${index}`).append(`<option selected="selected">${technologies[i]}</option>`);
+			$(`#${index}`).append(`<option selected="selected" value="${technologies[i]}">${technologies[i]}</option>`);
 		}
 		else{
-			$(`#${index}`).append(`<option>${technologies[i]}</option>`);	
+			$(`#${index}`).append(`<option value="${technologies[i]}">${technologies[i]}</option>`);	
 		}
 		
 	}	

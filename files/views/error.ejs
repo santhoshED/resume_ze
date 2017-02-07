@@ -1,17 +1,37 @@
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="./scripts/bootstrap.css">
 </head>
 <body>
-<h2>Doesn't exist</h2>
-<h4>please enter a valid ID</h4>
-<form action="/getresume" method="POST">
-		<input 
-			class="form-control" 
-			type="text" 
-			name="employee_id"
-			placeholder="Employee ID"/>
-			<button class="submit" type="submit">Submit</button>		
-	</form>
+	<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Zemoso</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Add New</a></li>
+                <li><a href="/resumes">Resumes</a></li>
+                <li><a href="/masterdb">Master DB</a></li>
+            </ul>
+        </div>
+    </div>
+	</nav>
+    <div class="col-lg-4 col-lg-offset-4">
+        <form action="/getresume" method="POST">
+            <div class="input-group">
+              <input type="text" class="form-control" name="employee_id" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-secondary" type="submit">Search</button>
+              </span>
+            </div>      
+        </form>
+        <div style="text-align:center">
+        <h3>Doesn't exist</h3>
+        <h4>Please enter a valid ID</h4>
+        </div>
+    </div>
+
 </body>
 </html>

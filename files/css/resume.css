@@ -38,7 +38,7 @@ body{
 			}
 
 	.body{
-		padding:2.5em 2.5em;
+		padding:2.5em 2.5em 0em 2.5em;
 	}
 		.res_row{
 			display:flex;
@@ -283,6 +283,7 @@ body{
     border: 1px solid transparent;
     border-radius: 4px;
 }
+
 @media print{
     #project_im{
         page-break-inside: auto!important;

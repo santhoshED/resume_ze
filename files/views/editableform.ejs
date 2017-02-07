@@ -12,13 +12,30 @@
   	<script src="./scripts/bootstrap-select.min.js"></script>
   	<script href="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>  	
   	<script type="text/javascript"src="./scripts/constants/masterdb.js"></script>
+  	<link rel="stylesheet" href="./scripts/fastselect.min.css">
+	<script src="./scripts/fastselect.min.js"></script>
 
   	<script type="text/javascript" src="./files/javascript/form.js"></script>
   	<script type="text/javascript" src="./files/javascript/editableform.js"></script>
   	
 </head>
 <body>
+	<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Zemoso</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Add New</a></li>
+                <li><a href="/resumes">Resumes</a></li>
+                <li><a href="/masterdb">Master DB</a></li>
+            </ul>
+        </div>
+    </div>
+	</nav>
 	<div class="wrapper">
+
 		<div class="header">
 			<img class="logo" src="./images/logo.png"/>
 			<a href="./zemosolabs" class="url">www.zemosolabs.com</a>
@@ -215,7 +232,7 @@
 							<p class="skill_heading">Server Side:</p>
 							<select 
 								id="server_side"
-								class="selectpicker form-control" 
+								class="multipleSelect form-control" 
 								multiple 
 								data-live-search="true"
 								name="server_side">
@@ -225,7 +242,7 @@
 							<p class="skill_heading">Front End:</p>
 							<select
 								id="front_end" 
-								class="selectpicker form-control" 
+								class="multipleSelect form-control" 
 								multiple  
 								data-live-search="true"
 								name="front_end">
@@ -235,7 +252,7 @@
 							<p class="skill_heading">DataBases:</p>
 							<select 
 								id="databases"
-								class="selectpicker form-control" 
+								class="multipleSelect form-control" 
 								multiple 
 								data-live-search="true"
 								name="databases">
@@ -245,7 +262,7 @@
 							<p class="skill_heading">Architectures & Cloud Services:</p>
 							<select 
 								id="technologies"
-								class="selectpicker form-control" 
+								class="multipleSelect form-control" 
 								multiple  
 								data-live-search="true"
 								name="technologies">
@@ -309,7 +326,7 @@
 								<p class="side-heading">Technologies:</p>
 								<select
 									id="proj_TechSelect_<%=i%>" 
-									class="selectpicker form-control" 
+									class="multipleSelect form-control" 
 									multiple 
 									title="Technologies" 
 									data-live-search="true"
@@ -367,7 +384,7 @@
 								<p class="side-heading">Technologies:</p>
 								<select
 									id="proj_TechSelect_0" 
-									class="selectpicker form-control" 
+									class="multipleSelect form-control" 
 									multiple 
 									title="Technologies" 
 									data-live-search="true"
@@ -421,7 +438,7 @@
 							<div class="form-group project-group">
 								<p class="side-heading">Technologies:</p>
 								<select 
-									class="selectpicker form-control skillSelect" 
+									class="multipleSelect form-control skillSelect" 
 									multiple 
 									title="Technologies" 
 									data-live-search="true"
@@ -490,7 +507,7 @@
 								<p class="side-heading">Technologies:</p>
 								<select
 									id="prior_proj_TechSelect_<%=i%>" 
-									class="selectpicker form-control"
+									class="multipleSelect form-control"
 									multiple 
 									title="Technologies" 
 									data-live-search="true"
@@ -548,7 +565,7 @@
 								<p class="side-heading">Technologies:</p>
 								<select
 									id="prior_proj_TechSelect_0" 
-									class="selectpicker form-control"
+									class="multipleSelect form-control"
 									multiple 
 									title="Technologies" 
 									data-live-search="true"
@@ -602,13 +619,14 @@
 							<div class=" form-group project-group">
 								<p class="side-heading">Technologies:</p>
 								<select
-									class="selectpicker form-control skillSelect"
+									class="multipleSelect form-control skillSelect"
 									multiple 
 									title="Technologies" 
 									data-live-search="true"
 									name="prior_proj[0]">
+								<option class="tech_hack" selected></option>
 								</select>
-								<option selected class="tech_hack"></option>
+								
 							</div>
 							<script type="text/javascript">renderSkills()</script>
 						</div>
@@ -619,7 +637,7 @@
 					</div>	
 				</div>
 				<div class='form-group'>
-           		    <button class="btn btn-primary submit" type="submit">Preview</button>
+           		    <button class="btn btn-primary submit preview" type="submit">Preview</button>
             	</div>
             	
 			</form>
@@ -628,5 +646,7 @@
             	</div>
 		</div>
 		</div>
+		<script type="text/javascript">$('.multipleSelect').fastselect();defaultOption();</script>
+
 </body>
 </html>

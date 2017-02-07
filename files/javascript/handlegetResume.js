@@ -10,7 +10,6 @@ module.exports = (req, res) => {
 	dbQuery.find({'employee_id':id},{'employee_id':1}).count()
 	.then((el)=>{
 		if(el>0){
-			console.log(el);
 			dbQuery.findOne({'employee_id': id}, (err, result) => {
 		    	if(err){
 		    		return res.render('./error.ejs', {err: err});
@@ -107,7 +106,6 @@ module.exports = (req, res) => {
 				else{
 					college_images[0] = masterdb.UNIVERSITIES[colleges];
 				}
-				console.log(info.proj);
 				return res.render('./editableform.ejs', {
 								employee_name:info.employee_name,
 								employee_position:info.employee_position,
