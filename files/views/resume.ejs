@@ -325,11 +325,11 @@
 				<a class="url">www.zemosolabs.com</a>
 			</div>
 			<div class="body">					
-				<p class="heading">SOME PRIOR IMPLEMENTATION EXPERIENCE:</p>
+				<p class="heading">MAJOR IMPLEMENTATION EXPERIENCE:</p>
 				<hr class="underline_3">
 				<div id="project" class="project">
 					
-					<div class="project_block">
+				<div class="project_block">
 					<div id="project_block_top">
 						<div>
 							<p class="project_name">Project Name:</p>
@@ -355,10 +355,13 @@
 								if(prior_projects_description[j].length>0){%>
 							<p><%=prior_projects_description[j]%></p><%}}%>
 						</div>
-						<%}if(prior_proj_images[i][0]){%>
+					
+						<%}%>
 					</div>
-						<div id="project_block_bottom">
+					
+					<div id="project_block_bottom">
 						<div id="project_im">
+							<% if(prior_proj_images[i][1]){%>
 						<div class="side-heading">
 							<p>Technologies:</p>
 						</div>	
@@ -390,7 +393,7 @@
 							<%}%>
 						</div>
 					</div>
-					</div>
+				</div>
 				</div>
 			</div>
 		</div>
@@ -402,7 +405,7 @@
 				<a class="url">www.zemosolabs.com</a>
 			</div>
 			<div class="body">					
-				<p class="heading">SOME PRIOR IMPLEMENTATION EXPERIENCE:</p>
+				<p class="heading">MAJOR IMPLEMENTATION EXPERIENCE:</p>
 				<hr class="underline_3">
 				<div id="project" class="project">
 					<div class="project_block">
@@ -431,8 +434,9 @@
 								if(prior_projects_description[j].length>0){%>
 							<p><%=prior_projects_description[j]%></p><%}}%>
 						</div>
-						<%}if(prior_proj_images[0][0]){%>
-					</div>
+						</div>
+						<%}if(prior_proj_images[0][1]){%>
+					
 						<div id="project_block_bottom">
 						<div id="project_im">
 						<div class="side-heading">

@@ -7,7 +7,7 @@ function renderUniversities(){
 	}
 }
 function renderSkills(){
-
+	
 	const technologies = Object.keys(database.TECHNOLOGIES).sort();
 	for(var i=0;i<technologies.length;i++){
 		$(".skillSelect").append(`<option value='${technologies[i]}'>${technologies[i]}</option>`);
@@ -157,7 +157,7 @@ function addProjectBlock(proj){
 	selectelem.setAttribute("title","Technologies");
 	selectelem.setAttribute("data-live-search","true");
 	selectelem.setAttribute("name","proj["+(proj)+"]");
-	selectelem.innerHTML += `<option class="tech_hack" selected></option>`;
+	selectelem.innerHTML += `<option class="tech_hack" value="" selected></option>`;
 
 	const full_stack = Object.keys(database.TECHNOLOGIES).sort();
 	for(var i=0;i<full_stack.length;i++){
@@ -236,12 +236,13 @@ function addPriorProjectBlock(prior_proj){
 	selectelem.setAttribute("title","Technologies");
 	selectelem.setAttribute("data-live-search","true");
 	selectelem.setAttribute("name",`prior_proj[${++prior_proj}]`);
-	selectelem.innerHTML += `<option class="tech_hack" selected></option>`;
+	selectelem.innerHTML += `<option class="tech_hack" value="" selected></option>`;
 
 	const full_stack = Object.keys(database.TECHNOLOGIES).sort();
 	for(var i=0;i<full_stack.length;i++){
 		var option = document.createElement("option");
 		option.text = full_stack[i];
+		option.value = full_stack[i];
 		selectelem.add(option);
 	}
 

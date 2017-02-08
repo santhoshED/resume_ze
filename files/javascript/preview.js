@@ -3,8 +3,7 @@ const database = require('../../scripts/constants/database.js');
 const masterdb = require('../../scripts/constants/masterdb.js');
 module.exports = (req, res) => {
 	const id = req.body.employee_id;
-	const dbQuery = database.resumes.collection('Resumes')
-
+	const dbQuery = database.resumes.collection('Resumes');
 
 dbQuery.find({'employee_id':id},{'employee_id':1}).count().then((el)=>{
 	if(el>0){
@@ -112,7 +111,6 @@ dbQuery.find({'employee_id':id},{'employee_id':1}).count().then((el)=>{
 	else{
 		college_images[0] = masterdb.UNIVERSITIES[colleges];
 	}
-
 	res.render('./resume.ejs', {
 					employee_name:info.employee_name,
 					employee_position:info.employee_position,

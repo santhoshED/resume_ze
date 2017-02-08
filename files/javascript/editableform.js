@@ -26,7 +26,7 @@ function renderUniversitiesEdit(name ,index){
 function renderTechnologiesEdit(names,index){
 
 	const array_names =  names.split(',');
-	$(`#${index}`).append(`<option selected class="tech_hack"></option>`);
+	$(`#${index}`).append(`<option selected class="tech_hack" value=""></option>`);
 
 	const technologies = Object.keys(database.TECHNOLOGIES).sort();
 	for(var i=0;i<technologies.length;i++){
