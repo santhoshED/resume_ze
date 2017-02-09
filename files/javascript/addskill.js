@@ -17,7 +17,7 @@ module.exports = (req, res) => {
       res.status(500).send(err);
     }
     else {
-      res.redirect('/')
+      res.redirect('/');
     }
   });
 }

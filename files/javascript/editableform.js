@@ -1,13 +1,34 @@
+
 function handleDelete(id){
-	var form = document.createElement("form");
-	form.setAttribute("method","POST");
-	form.setAttribute("action","/delete");
-	form.innerHTML += `<input  
-			type="hidden" 
-			name="employee_id"
-			value=${id}>`;
-	document.body.appendChild(form);
-    form.submit();
+	
+	sweetAlert({
+		  title: "Are you sure?",
+		  text: "You will not be able to recover this Resume",
+		  type: "warning",
+		  showCancelButton: true,
+		  confirmButtonColor: "#DD6B55",
+		  confirmButtonText: "Yes, delete it!",
+		  cancelButtonText: "No, cancel please!",
+		  closeOnConfirm: false,
+		  closeOnCancel: false
+		},
+		function(isConfirm){
+		  if (isConfirm) {
+		  	var form = document.createElement("form");
+			form.setAttribute("method","POST");
+			form.setAttribute("action","/delete");
+			form.innerHTML += `<input  
+					type="hidden" 
+					name="employee_id"
+					value=${id}>`;
+			document.body.appendChild(form);
+		    form.submit();
+		    sweetAlert("Deleted!", "Your file has been deleted.", "success");
+		  } else {
+		    sweetAlert("Cancelled", "Your file is safe :)", "error");
+		  }
+	});
+
 }
 
 function renderUniversitiesEdit(name ,index){

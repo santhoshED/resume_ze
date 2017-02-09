@@ -2,6 +2,9 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="./scripts/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="./scripts/sweetalert.css">
+
+	<script type="text/javascript" src="./scripts/sweetalert.min.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -25,7 +28,7 @@
 		<div class="panel panel-default">
 	  		<div class="panel-heading">Add University</div>
 	  		<div class="panel-body">
-	  			<form action="/adduniversity" method="POST" enctype="multipart/form-data">
+	  			<form id="uni" action="/adduniversity" method="POST" enctype="multipart/form-data">
 					<div class="form">
 						<input 
 						class="form-control" 
@@ -37,9 +40,9 @@
 						<div class="form-group">
 				      		<input type="file" name="uni_img" accept="image/*" required>
 				      	</div>
-				        <button class="btn btn-secondary" type="submit">Add</button>
 				    </div>		
 				</form>
+				<button class="btn btn-secondary" onclick="handleAdd('uni')">Add</button>
 	  		</div>
 		</div>
 		</div>
@@ -47,7 +50,7 @@
 		<div class="panel panel-default">
 	  		<div class="panel-heading">Add Skill</div>
 	  		<div class="panel-body">
-	  			<form action="/addskill" method="POST" enctype="multipart/form-data">
+	  			<form id="skill" action="/addskill" method="POST" enctype="multipart/form-data">
 					<div class="form">
 						<input 
 						class="form-control" 
@@ -59,14 +62,40 @@
 						<div class="form-group">
 				      		<input type="file" name="skill_img" accept="image/*" required>
 				      	</div>
-				        <button class="btn btn-secondary" type="submit">Add</button>
+				        
 				    </div>		
 				</form>
+				<button class="btn btn-secondary" onclick="handleAdd('skill')">Add</button>
 	  		</div>
 		</div>
 		</div>
 	</div>
 	</div>
 	</div>
+	<script type="text/javascript">
+		function handleAdd(id){
+			sweetAlert({
+			  title: "Are you sure?",
+			  text: "You will not be able to delete undo this",
+			  type: "warning",
+			  showCancelButton: true,
+			  confirmButtonColor: "#DD6B55",
+			  confirmButtonText: "Yes, Add it",
+			  closeOnConfirm: false
+			},
+			function(){
+				sweetAlert({
+					title: "Database has been updated",
+			  		type: "success",
+			  		confirmButtonText: "OK",
+			  		closeOnConfirm: true
+			  	},function(){
+			  		document.getElementById(id).submit();
+			  	});
+				
+			});
+			
+		}
+	</script>
 </body>
 </html>
