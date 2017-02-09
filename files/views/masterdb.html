@@ -1,0 +1,72 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="./scripts/bootstrap.css">
+</head>
+<body>
+	<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Zemoso</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Add New</a></li>
+                <li><a href="/resumes">Resumes</a></li>
+                <li><a href="/masterdb">Master DB</a></li>
+            </ul>
+        </div>
+    </div>
+	</nav>
+	<div class="panel panel-default col-lg-8 col-lg-offset-2">
+	<div class="panel-body">	
+	<div class="col-lg-12">
+		<div class="col-lg-6">
+		<div class="panel panel-default">
+	  		<div class="panel-heading">Add University</div>
+	  		<div class="panel-body">
+	  			<form action="/adduniversity" method="POST" enctype="multipart/form-data">
+					<div class="form">
+						<input 
+						class="form-control" 
+						type="text" 
+						name="uni_name"
+						placeholder="University Name"
+						required/>
+						<br>
+						<div class="form-group">
+				      		<input type="file" name="uni_img" accept="image/*" required>
+				      	</div>
+				        <button class="btn btn-secondary" type="submit">Add</button>
+				    </div>		
+				</form>
+	  		</div>
+		</div>
+		</div>
+		<div class="col-lg-6">
+		<div class="panel panel-default">
+	  		<div class="panel-heading">Add Skill</div>
+	  		<div class="panel-body">
+	  			<form action="/addskill" method="POST" enctype="multipart/form-data">
+					<div class="form">
+						<input 
+						class="form-control" 
+						type="text" 
+						name="skill_name"
+						placeholder="Skill Name"/
+						required>
+						<br>
+						<div class="form-group">
+				      		<input type="file" name="skill_img" accept="image/*" required>
+				      	</div>
+				        <button class="btn btn-secondary" type="submit">Add</button>
+				    </div>		
+				</form>
+	  		</div>
+		</div>
+		</div>
+	</div>
+	</div>
+	</div>
+</body>
+</html>

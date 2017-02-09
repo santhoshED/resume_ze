@@ -1,20 +1,20 @@
-const database = {
+ database = {
 	"UNIVERSITIES":{
-		"Amrita University":"Amrita_Univ_logo.jpg",
-		"BITS Pilani":"BITS_Pilani_Logo.png",
-		"Indian Institute of Technology Roorkee":"IITR_New_Logo.jpg",
-		"Indian Institute of Technology Bhuvaneshwar":"IIT_BHU_Logo.jpg",
-		"Indian Institute of Technology Guwahati":"IIT_Guwahati_Logo.svg.png",
-		"Indian Institute of Technology Kharagpur":"IIT_KGP_Logo.png",
-		"Indian Institute of Technology Kanpur":"IIT_Kanpur_Logo.png",
-		"Indian Institute of Technology Madras":"IIT_Madras_Logo.png",
-		"Indian School of Mines Dhanbad":"ISMDhanbadLogo.png",
-		"Jawaharlal Nehru Technological University Hyderabad":"JNTU_Logo.jpg",
-		"International Institute of Information Technology Hyderabad":"Logo_IIIT_Hyd.jpg",
-		"Mahatma Gandhi University":"Mahatma_Gandhi_University_logo.GIF",
-		"University of Sydney":"Univ_of_Sydney_logo.png",
-		"Koneru Lakshmaiah University":"logo_K_L_Univ.png"
-	}, 
+		'Amrita University': 'Amrita_Univ_logo.jpg',
+		'BITS Pilani': 'BITS_Pilani_Logo.png',
+		'Indian Institute of Technology Roorkee': 'IITR_New_Logo.jpg',
+		'Indian Institute of Technology Varanasi': 'IIT_BHU_Logo.jpg',
+		'Indian Institute of Technology Guwahati': 'IIT_Guwahati_Logo.svg.png',
+		'Indian Institute of Technology Kharagpur': 'IIT_KGP_Logo.png',
+		'Indian Institute of Technology Kanpur': 'IIT_Kanpur_Logo.png',
+		'Indian Institute of Technology Madras': 'IIT_Madras_Logo.png',
+		'Indian School of Mines Dhanbad': 'ISMDhanbadLogo.png',
+		'Jawaharlal Nehru Technological University Hyderabad': 'JNTU_Logo.jpg',
+		'International Institute of Information Technology Hyderabad': 'Logo_IIIT_Hyd.jpg',
+		'Mahatma Gandhi University': 'Mahatma_Gandhi_University_logo.GIF',
+		'University of Sydney': 'Univ_of_Sydney_logo.png',
+		'Koneru Lakshmaiah University': 'logo_K_L_Univ.png'
+	},
 	"TECHNOLOGIES":{
 		"Active Admin":"active-admin-w-t@3x.jpg",
 		"Adhearsion":"adhearsion@3x.jpg",
@@ -115,7 +115,7 @@ const database = {
 		"Python Pandas":"python-pandas-w-t@3x.jpg",
 		"Python":"python-w-t@3x.jpg",
 		"Quick Rules":"quick-rules-n-e-t-w-t@3x.png",
-		"R":"r@3x.jpg",
+		"R ":"r@3x.jpg",
 		"React js":"react-j-s-w-t@3x.jpg",
 		"Realm Swift":"realm-swift-w-t@3x.png",
 		"Restify":"restify-w-t@3x.jpg",
@@ -158,8 +158,32 @@ const database = {
 		"xcode":"xcode-w-t@3x.jpg",
 		"XML":"x-m-l-w-t@3x.png",
 		"yarn":"yarn-w-t@3x.jpg",
-		"zookeeper":"zookeeper-w-t@3x.jpg"	
+		"zookeeper":"zookeeper-w-t@3x.jpg",
+		"Hapi.js":"hapi-j-s-w-t@3x.png",
+		"PDF Box":"p-d-f-box-w-t@3x.png",
+		"Open CV":"open-c-v@3x.png",
+		"ZXing QR Library":"z-xing-q-r-library-w-t@3x.png",
+		"Adobe Flex":"flex@3x.jpg",
+		"Google Maps API":"google-maps-a-p-is@3x.jpg",
+		"Git":"git@3x.jpg",
+		"Rabbit MQ":"rabbit-m-q@3x.jpg",
+		"Web Stomp":"web-stomp@3x.png",
+		"Open Tok":"open-tok@3x.png",
+		"SVN":"s-v-n@3x.png",
+		"HQL":"h-q-l@3x.png",
+		"Salesforce API":"salesforce-a-p-i-w-t@3x.png",
+		"Adwords API":"ad-words-a-p-i-w-t@3x.png",
+		"Analytics API":"analytics-a-p-i-w-t@3x.png",
+		"Python Rake":"python-rake-w-t@3x.jpg",
+		"TestNG":"test-n-g-w-t@3x.png",
+		"Mockito":"mockito-w-t@3x.png",
+		"VB 6":"v-b-6@3x.png",
+		"DB 2":"d-b-2@3x.png",
+		"Idiom Decision Management System":"idiom-decision-management-system-w-t@3x.jpg",
+		"PL/SQL":"s-q-l-w-t@3x.png",
+		"VBA":"v-b-a-w-t@3x.png"	
 	}
 };
+
 
 module.exports = database;

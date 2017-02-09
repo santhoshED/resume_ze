@@ -4,12 +4,14 @@ const MongoClient = require('mongodb').MongoClient;
 const basicAuth = require('basic-auth');
 const path = require('path');
 const bodyParser= require('body-parser');
-
+const fileUpload = require('express-fileupload');
 
 const preview = require('./files/javascript/preview.js');
 var database = require('./scripts/constants/database.js');
 const getresume = require('./files/javascript/handlegetResume.js');
 const deleteresume = require('./files/javascript/deleteresume.js');
+const adduni = require('./files/javascript/adduniversity.js');
+const addskill = require('./files/javascript/addskill.js');
 
 const server = express();
 
@@ -56,13 +58,15 @@ MongoClient.connect('mongodb://localhost:27017/resume_builder', (err, mongodb) =
       };
     };
 
+  
+
     server.use('/files',express.static(path.join(__dirname,'files')));
     server.use('/scripts',express.static(path.join(__dirname,'scripts')));
     server.use('/images',express.static(path.join(__dirname,'images')));
     server.set("views",'./files/views');
 
     server.use(bodyParser.urlencoded({extended: true}));
-
+    server.use(fileUpload());
 
     server.get('/',auth,(req,res)=>{res.sendFile(__dirname +'/files/views/form.html')});
     server.get('/resumes',(req,res)=>{res.sendFile(__dirname+'/files/views/getResume.html')});
@@ -71,6 +75,8 @@ MongoClient.connect('mongodb://localhost:27017/resume_builder', (err, mongodb) =
     server.post('/preview', preview);
     server.post('/getresume', getresume);
     server.post('/delete',deleteresume);
+    server.post('/adduniversity',adduni);
+    server.post('/addskill',addskill);
 
     server.listen(80,() => {console.log('server has started on 80')});
 
