@@ -7,15 +7,16 @@
 	<link rel="stylesheet" type="text/css" href="./scripts/bootstrap.css">
 	<link rel="stylesheet" href="./scripts/bootstrap-select.min.css">
 	<link rel="stylesheet" type="text/css" href="./scripts/sweetalert.css">
+	<link rel="stylesheet" href="./scripts/chosen/chosen.css">
 
 	<script src="./scripts/jquery.min.js"></script>
+	<script src="./scripts/chosen/chosen.jquery.min.js"></script>
+	<script src="./scripts/chosen/chosen.sortable.js"></script>
   	<script src="./scripts/bootstrap.min.js"></script>
   	<script src="./scripts/bootstrap-select.min.js"></script>
   	<script href="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>  	
   	<script type="text/javascript"src="./scripts/constants/masterdb.js"></script>
-  	<link rel="stylesheet" href="./scripts/fastselect.min.css">
-	<script src="./scripts/fastselect.min.js"></script>
-	<script type="text/javascript" src="./scripts/sweetalert.min.js"></script>
+  	<script type="text/javascript" src="./scripts/sweetalert.min.js"></script>
 	
   	<script type="text/javascript" src="./files/javascript/form.js"></script>
   	<script type="text/javascript" src="./files/javascript/editableform.js"></script>
@@ -24,16 +25,18 @@
 <body>
 	<nav class="navbar navbar-default">
     <div class="container-fluid">
+        <div style="display:flex;justify-content:center;font-size:18px">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Zemoso</a>
+            <p class="navbar-brand" style="color:#ff751a;font-weight:800" >Zemoso</p>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav navbar-center">
                 <li><a href="/">Add New</a></li>
                 <li><a href="/resumes">Resumes</a></li>
                 <li><a href="/masterdb">Master DB</a></li>
             </ul>
         </div>
+    </div>
     </div>
 	</nav>
 	<div class="wrapper">
@@ -43,7 +46,7 @@
 			<a href="./zemosolabs" class="url">www.zemosolabs.com</a>
 		</div>
 		<div class="body">
-			<form  action="/preview" method="POST" target="_blank">
+			<form  id="form" action="/preview" method="POST" target="_blank">
 				<div class ="employee_name input-group">
 					<input 
 						class="form-control" 
@@ -96,7 +99,8 @@
 											class="selectpicker form-control education-group" 
 											name="college[][name]" 
 											title="College Name" 
-											data-live-search="true">  
+											data-live-search="true">
+											<option value="">None</option>  
 										</select>
 										<input 
 											class="form-control education-group" 
@@ -121,7 +125,8 @@
 											name="college[][name]" 
 											title="College Name"
 											value = "<%=college.name%>" 
-											data-live-search="true">  
+											data-live-search="true">
+											<option value="">None</option>  
 										</select>
 										<input 
 											class="form-control education-group" 
@@ -234,42 +239,36 @@
 							<p class="skill_heading">Server Side:</p>
 							<select 
 								id="server_side"
-								class="multipleSelect form-control" 
-								multiple 
-								data-live-search="true"
-								name="server_side">
+								class="chosen form-control skillSelect" 
+								multiple>
 							</select>
-							<script type="text/javascript">renderskillsEdit('<%=server_side%>','server_side')</script>
+
+							<input id="server_side_select" type="text" name="server_side[]" style="display:none"/>
+							
 							<br>
 							<p class="skill_heading">Front End:</p>
-							<select
-								id="front_end" 
-								class="multipleSelect form-control" 
-								multiple  
-								data-live-search="true"
-								name="front_end">
+							<select 
+								id="front_end"
+								class="chosen form-control skillSelect" 
+								multiple >
 							</select>
-							<script type="text/javascript">renderskillsEdit('<%=front_end%>','front_end')</script>
+							<input id="front_end_select" type="text" name="front_end[]" style="display:none"/>
 							<br>
 							<p class="skill_heading">DataBases:</p>
 							<select 
 								id="databases"
-								class="multipleSelect form-control" 
-								multiple 
-								data-live-search="true"
-								name="databases">
+								class="chosen form-control skillSelect" 
+								multiple >
 							</select>
-							<script type="text/javascript">renderskillsEdit('<%=databases%>','databases')</script>
+							<input id="databases_select" type="text" name="databases[]" style="display:none"/>
 							<br>
 							<p class="skill_heading">Architectures & Cloud Services:</p>
-							<select 
-								id="technologies"
-								class="multipleSelect form-control" 
-								multiple  
-								data-live-search="true"
-								name="technologies">
+							<select
+								id="technologies" 
+								class="chosen form-control skillSelect" 
+								multiple >
 							</select>
-							<script type="text/javascript">renderskillsEdit('<%=technologies%>','technologies')</script>
+							<input id="technologies_select" type="text" name="technologies[]" style="display:none"/>
 						</div>
 					</div>
 				</div>
@@ -282,7 +281,7 @@
 							if(projects.name.constructor===Array){ 
 							for(var i=0;i<projects.name.length;i++){
 								if(projects.name[i].length>0){%>
-						<div id ='<%=i%>' class="form-group project_block">
+						<div id='<%=i%>' class="form-group project_block">
 							<div class="input-group project-group">
 								<input 
 									class="form-control" 
@@ -328,14 +327,14 @@
 								<p class="side-heading">Technologies:</p>
 								<select
 									id="proj_TechSelect_<%=i%>" 
-									class="multipleSelect form-control" 
+									class="chosen form-control" 
 									multiple 
 									title="Technologies" 
-									data-live-search="true"
 									name="proj[<%=i%>]">
+									<option class="tech_hack" value="" selected></option>
 								</select>
 							</div>
-							<script type="text/javascript">renderTechnologiesEdit('<%=proj[i]%>','proj_TechSelect_<%=i%>')</script>
+							<script type="text/javascript">renderTechnologiesEdit('<%=proj[i]%>',"proj_TechSelect_<%=i%>")</script>
 						</div>
 						
 						<%}}}
@@ -386,14 +385,13 @@
 								<p class="side-heading">Technologies:</p>
 								<select
 									id="proj_TechSelect_0" 
-									class="multipleSelect form-control" 
+									class="chosen form-control" 
 									multiple 
-									title="Technologies" 
-									data-live-search="true"
 									name="proj[0]">
+									<option class="tech_hack" value="" selected></option>
 								</select>
 							</div>
-							<script type="text/javascript">renderTechnologiesEdit('<%=proj[0]%>','proj_TechSelect_0')</script>
+							<script type="text/javascript">renderTechnologiesEdit('<%=proj[0]%>',"proj_TechSelect_0")</script>
 						</div>
 						
 						<%}}else{%>
@@ -440,13 +438,13 @@
 							<div class="form-group project-group">
 								<p class="side-heading">Technologies:</p>
 								<select 
-									class="multipleSelect form-control skillSelect" 
+									class="chosen form-control skillSelect" 
 									multiple 
 									title="Technologies" 
-									data-live-search="true"
 									name="proj[0]">
+									<option class="tech_hack" value="" selected></option>
 								</select>
-								<option class="tech_hack" value="" selected></option>
+								
 							</div>
 						</div>
 						<%}%>
@@ -509,14 +507,13 @@
 								<p class="side-heading">Technologies:</p>
 								<select
 									id="prior_proj_TechSelect_<%=i%>" 
-									class="multipleSelect form-control"
+									class="chosen form-control"
 									multiple 
-									title="Technologies" 
-									data-live-search="true"
 									name="prior_proj[<%=i%>]">
+									<option class="tech_hack" value="" selected></option>
 								</select>
 							</div>
-							<script type="text/javascript">renderTechnologiesEdit('<%=prior_proj[i]%>','prior_proj_TechSelect_<%=i%>')</script>
+							<script type="text/javascript">renderTechnologiesEdit('<%=prior_proj[i]%>',"prior_proj_TechSelect_<%=i%>")</script>
 						</div>
 						
 						<%}}}
@@ -567,14 +564,13 @@
 								<p class="side-heading">Technologies:</p>
 								<select
 									id="prior_proj_TechSelect_0" 
-									class="multipleSelect form-control"
+									class="chosen form-control"
 									multiple 
-									title="Technologies" 
-									data-live-search="true"
 									name="prior_proj[0]">
+									<option class="tech_hack" value="" selected></option>
 								</select>
 							</div>
-							<script type="text/javascript">renderTechnologiesEdit('<%=prior_proj[0]%>','prior_proj_TechSelect_0')</script>
+							<script type="text/javascript">renderTechnologiesEdit('<%=prior_proj[0]%>',"prior_proj_TechSelect_0")</script>
 						</div>
 						
 						<%}}else{%>
@@ -621,16 +617,14 @@
 							<div class=" form-group project-group">
 								<p class="side-heading">Technologies:</p>
 								<select
-									class="multipleSelect form-control skillSelect"
+									class="chosen form-control skillSelect"
 									multiple 
-									title="Technologies" 
-									data-live-search="true"
 									name="prior_proj[0]">
 								<option class="tech_hack" value="" selected></option>
 								</select>
 								
 							</div>
-							<script type="text/javascript">renderSkills()</script>
+							
 						</div>
 						
 						<%}%>
@@ -639,7 +633,7 @@
 					</div>	
 				</div>
 				<div class='form-group'>
-           		    <button class="btn btn-primary submit preview" type="submit">Preview</button>
+           		    <button class="btn btn-primary submit preview" onclick="handlePreview()">Preview</button>
             	</div>
             	
 			</form>
@@ -648,7 +642,23 @@
             	</div>
 		</div>
 		</div>
-		<script type="text/javascript">$('.multipleSelect').fastselect();defaultOption();</script>
-
+		<script type="text/javascript">
+	
+			renderUniversities();
+			renderSkills();
+			defaultOption();
+			$(document).ready(function(){
+				$(".chosen").chosen();
+			});
+		</script>
+		<script type="text/javascript">
+			document.addEventListener('DOMContentLoaded', function() {
+   				renderskillsEdit('<%=server_side%>','server_side');
+   				renderskillsEdit('<%=front_end%>','front_end');
+   				renderskillsEdit('<%=databases%>','databases');
+   				renderskillsEdit('<%=technologies%>','technologies');
+			}, false);
+			
+		</script>
 </body>
 </html>

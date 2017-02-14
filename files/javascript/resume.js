@@ -9,6 +9,20 @@ function handlePrint() {
 	  closeOnConfirm: true
 	},
 	function(){
-		setTimeout(function(){ window.print(); }, 100);
+		setTimeout(function(){ window.print(); }, 1000);
 	});
+}
+
+function adjustSkills(maxid){
+	var height = document.getElementById('skills').offsetHeight;
+	var max = maxid;
+	while(height > 400){
+		var id = max+"im";
+		var elements = document.getElementsByClassName(id);
+		 while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+		max--;
+		height = document.getElementById('skills').offsetHeight;
+	}
 }

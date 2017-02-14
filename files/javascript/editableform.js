@@ -47,7 +47,6 @@ function renderUniversitiesEdit(name ,index){
 function renderTechnologiesEdit(names,index){
 
 	const array_names =  names.split(',');
-	$(`#${index}`).append(`<option selected class="tech_hack" value=""></option>`);
 
 	const technologies = Object.keys(database.TECHNOLOGIES).sort();
 	for(var i=0;i<technologies.length;i++){
@@ -62,17 +61,8 @@ function renderTechnologiesEdit(names,index){
 }
 
 function renderskillsEdit(names,index){
-	const array_names =  names.split(',');
-
-	const technologies = Object.keys(database.TECHNOLOGIES).sort();
-	for(var i=0;i<technologies.length;i++){
-		if(array_names.indexOf(technologies[i])>=0){
-			$(`#${index}`).append(`<option selected="selected" value="${technologies[i]}">${technologies[i]}</option>`);
-		}
-		else{
-			$(`#${index}`).append(`<option value="${technologies[i]}">${technologies[i]}</option>`);	
-		}
-		
-	}	
+	names = names.split(',');
+	var node =$(`#${index}`);
+	ChosenOrder.setSelectionOrder(node, names, true);	
 }
 

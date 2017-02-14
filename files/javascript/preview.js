@@ -20,10 +20,9 @@ dbQuery.find({'employee_id':id},{'employee_id':1}).count().then((el)=>{
 	}})	
 
 	const info = req.body;
-	const databases = info.databases || "";
+		
 
 	var proj_images = new Array();
-
 	if(info.proj){
 		for(var i=0;i<info.proj.length;i++){
 			var temp = new Array;
@@ -31,31 +30,26 @@ dbQuery.find({'employee_id':id},{'employee_id':1}).count().then((el)=>{
 				for(var j=1;j<info.proj[i].length;j++)
 					temp[j]=masterdb.TECHNOLOGIES[info.proj[i][j]];
 			}
-			else{
-				temp[0] = false;
-			}
 			proj_images[i]=temp;
 			
 		}	
 	}
+	
 	var prior_proj_images = new Array();
-
 	if(info.prior_proj){
 		for(var i=0;i<info.prior_proj.length;i++){
 			var temp = new Array;
 			if(info.prior_proj[i].constructor === Array){
 				for(var j=1;j<info.prior_proj[i].length;j++)
-					temp[j]=masterdb.TECHNOLOGIES[info.prior_proj[i][j]];
+					temp[j] = masterdb.TECHNOLOGIES[info.prior_proj[i][j]];
 			}
-			else{
-				temp[0]=false;
-			}
+			
 			prior_proj_images[i]=temp;	
 		}
 	}
 
+	const databases = info.databases[0].split(',') || "";
 	var databases_images = new Array();
-
 	if(databases.constructor === Array){
 		for(var i=0;i<databases.length;i++){
 			databases_images[i] = masterdb.TECHNOLOGIES[databases[i]];
@@ -65,9 +59,8 @@ dbQuery.find({'employee_id':id},{'employee_id':1}).count().then((el)=>{
 		databases_images[0] = masterdb.TECHNOLOGIES[databases];
 	}
 
-	const technologies = info.technologies||"";
+	const technologies = info.technologies[0].split(',')||"";
 	var technologies_images = new Array();
-
 	if(technologies.constructor === Array){
 		for(var i=0;i<technologies.length;i++){
 			technologies_images[i] = masterdb.TECHNOLOGIES[technologies[i]];
@@ -76,9 +69,9 @@ dbQuery.find({'employee_id':id},{'employee_id':1}).count().then((el)=>{
 	else if(technologies.length>0){
 		technologies_images[0] = masterdb.TECHNOLOGIES[technologies];
 	}
-	const server_side = info.server_side || "";
-	var server_side_images = new Array();
 
+	const server_side = info.server_side[0].split(',') || "";
+	var server_side_images = new Array();
 	if(server_side.constructor === Array){
 		for(var i=0;i<server_side.length;i++){
 			server_side_images[i] = masterdb.TECHNOLOGIES[server_side[i]];
@@ -87,7 +80,8 @@ dbQuery.find({'employee_id':id},{'employee_id':1}).count().then((el)=>{
 	else if(server_side.length>0){
 		server_side_images[0] = masterdb.TECHNOLOGIES[server_side];
 	}
-	const front_end = info.front_end ||"";
+
+	const front_end = info.front_end[0].split(',') ||"";
 	var front_end_images = new Array();
 
 	if(front_end.constructor === Array){
@@ -98,6 +92,7 @@ dbQuery.find({'employee_id':id},{'employee_id':1}).count().then((el)=>{
 	else if(front_end.length>0){
 		front_end_images[0] = masterdb.TECHNOLOGIES[front_end];
 	}
+
 	const summary = info.summary.split("\r\n");
 
 	const colleges = info.college[0].name;
@@ -122,10 +117,16 @@ dbQuery.find({'employee_id':id},{'employee_id':1}).count().then((el)=>{
 					projects:info.projects[0],
 					prior_projects:info.prior_projects[0],
 					databases_images:databases_images,
+					databases,
 					technologies_images:technologies_images,
+					technologies,
 					server_side_images:server_side_images,
+					server_side,
 					front_end_images:front_end_images,
+					front_end,
 					proj_images,
+					proj:info.proj,
+					prior_proj:info.prior_proj,
 					prior_proj_images,
 	})
 };

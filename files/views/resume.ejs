@@ -4,10 +4,6 @@
 	<title>RESUME</title>
 	<link rel="stylesheet" type="text/css" href="./scripts/sweetalert.css">
 	<link rel="stylesheet" type="text/css" href="./files/css/resume.css">
-
-	<script type="text/javascript" src="./scripts/sweetalert.min.js"></script>
-	<script type="text/javascript" src="./files/javascript/resume.js"></script>
-
 </head>
 <body>
 	<div class="wrapper">
@@ -76,7 +72,7 @@
 						<hr class="underline">
 						<div id="work_experience"class="work-experience">
 						<% if(workex.designation.constructor === Array){ 
-						for(var i=0;i<workex.designation.length;i++){
+						for(var i=0;i<5;i++){
 							if(workex.designation[i].length>0){%>
 							<div class="work_experience_block">
 								<div class="work_experience_vector">
@@ -85,7 +81,7 @@
 								var img_2;
 								if(i == 0 ){img_1="./images/vector/arrow.png"} 
 									else {img_1="./images/vector/small.png"}
-								if(i==workex.designation.length-1|| workex.designation[i+1].length ==0){img_2="./images/vector/start.png"}
+								if(i==workex.designation.length-1|| workex.designation[i+1].length ==0|| i == 4){img_2="./images/vector/start.png"}
 									else{img_2="./images/vector/large.png"}
 								%>
 									<img class="vector-image" src=<%=img_1%>></img>
@@ -123,41 +119,68 @@
 						<p class="heading">SKILLS</p>
 						<hr class="underline">
 						<div id="skills" class ="skills">
-							<% if(server_side_images.length>0){%>
+							<% if(server_side[0]){%>
 							<div class="skill_heading">
 								<p>Server Side:</p>
 							</div>
 							<div class="skill_images">
-								<%for(var i=0;i<server_side_images.length;i++){%>
-								<img class="skill_image" src=<%="./images/full_stack/"+server_side_images[i]%>></img>
-								<%}%>
+								<%for(var i=0;i<server_side_images.length;i++){
+								if(server_side_images[i]){%>
+
+								<img  class="skill_image <%=i+"im"%>" src=<%="./images/full_stack/"+server_side_images[i]%>></img>
+								<%}
+								else if(server_side_images[i]==false){%>
+								<div class="skill_image">
+									<p class="noimage_top"><%=server_side[i]%></p>
+									<p class="noimage_bottom"><%=server_side[i]%></p>
+								</div>
+								<%}}%>
 							</div>
-							<%} if(front_end_images.length>0){%>
+							<%} if(front_end[0]){%>
 							<div class="skill_heading">
 								<p>Front End:</p>
 							</div>
 							<div class="skill_images">
-								<%for(var i=0;i<front_end_images.length;i++){%>
-								<img class="skill_image" src=<%="./images/full_stack/"+front_end_images[i]%>></img>
-								<%}%>
+								<%for(var i=0;i<front_end_images.length;i++){
+									if(front_end_images[i]){%>
+								<img  class="skill_image <%=i+"im"%>" src=<%="./images/full_stack/"+front_end_images[i]%>></img>
+								<%}
+								else if(front_end_images[i]==false){%>
+								<div class="skill_image">
+									<p class="noimage_top"><%=front_end[i]%></p>
+									<p class="noimage_bottom"><%=front_end[i]%></p>
+								</div>
+								<%}}%>
 							</div>
-							<%} if(databases_images.length>0){%>
+							<%} if(databases[0]){%>
 							<div class="skill_heading">
 								<p>DataBases:</p>
 							</div>
 							<div class="skill_images">
-								<%for(var i=0;i<databases_images.length;i++){%>
-								<img class="skill_image" src=<%="./images/full_stack/"+databases_images[i]%>></img>
-								<%}%>
+								<%for(var i=0;i<databases_images.length;i++){
+									if(databases_images[i]){%>
+								<img  class="skill_image <%=i+"im"%>" src=<%="./images/full_stack/"+databases_images[i]%>></img>
+								<%} else if(databases_images[i]==false){%>
+								<div class="skill_image">
+									<p class="noimage_top"><%=databases[i]%></p>
+									<p class="noimage_bottom"><%=databases[i]%></p>
+								</div>
+									<%}}%>
 							</div>
-							<%} if(technologies_images.length>0){%>
+							<%} if(technologies[0]){%>
 							<div class="skill_heading">
 								<p>Architectures & Cloud Services:</p>
 							</div>
 							<div class="skill_images">
-								<%for(var i=0;i<technologies_images.length;i++){%>
-								<img class="skill_image" src=<%="./images/full_stack/"+technologies_images[i]%>></img>
-								<%}%>
+								<%for(var i=0;i<technologies_images.length;i++){
+									if(technologies_images[i]){%>
+								<img  class="skill_image <%=i+"im"%>" src=<%="./images/full_stack/"+technologies_images[i]%>></img>
+								<%}else if(technologies_images[i]==false){%>
+								<div class="skill_image">
+									<p class="noimage_top"><%=technologies[i]%></p>
+									<p class="noimage_bottom"><%=technologies[i]%></p>
+								</div>
+								<%}}%>	
 							</div>
 							<%}%>
 						</div>
@@ -218,7 +241,12 @@
 
 							<img class="project_image" src=<%="./images/full_stack/"+proj_images[i][j]%>></img>
 
-							<%}}%>
+							<%}else if(proj_images[i][j] === false){%>
+							<div class="skill_image">
+								<p class="noimage_top"><%=proj[i][j]%></p>
+								<p class="noimage_bottom"><%=proj[i][j]%></p>
+							</div>
+						<%}}%>
 						</div>
 
 						<div class="side-heading">
@@ -293,6 +321,11 @@
 
 							<img class="project_image" src=<%="./images/full_stack/"+proj_images[0][j]%>></img>
 
+							<%}else if(proj_images[0][j]==false){%>
+								<div class="skill_image">
+									<p class="noimage_top"><%=proj[0][j]%></p>
+									<p class="noimage_bottom"><%=proj[0][j]%></p>
+								</div>
 							<%}}%>
 						</div>
 					
@@ -329,7 +362,9 @@
 				<a class="url">www.zemosolabs.com</a>
 			</div>
 			<div class="body">					
-				<p class="heading">MAJOR IMPLEMENTATION EXPERIENCE:</p>
+				<p class="heading">
+					<%if(projects.name.length>0){%>SOME PRIOR IMPLEMENTATION EXPERIENCE:<%}
+					else{%>MAJOR IMPLEMENTATION EXPERIENCE<%}%></p>
 				<hr class="underline_3">
 				<div id="project" class="project">
 					
@@ -365,7 +400,7 @@
 					
 					<div id="project_block_bottom">
 						<div id="project_im">
-							<% if(prior_proj_images[i][1]){%>
+							<% if(prior_proj[i]){%>
 						<div class="side-heading">
 							<p>Technologies:</p>
 						</div>	
@@ -375,7 +410,12 @@
 
 							<img class="project_image" src=<%="./images/full_stack/"+prior_proj_images[i][j]%>></img>
 
-							<%}}%>
+							<%}else if(prior_proj_images[i][j]==false){%>
+							<div class="skill_image">
+								<p class="noimage_top"><%=prior_proj[i][j]%></p>
+								<p class="noimage_bottom"><%=prior_proj[i][j]%></p>
+							</div>
+						<%}}%>
 						</div>
 						<%}if(prior_projects.contribution[i]){%>
 						<div class="side-heading">
@@ -409,7 +449,9 @@
 				<a class="url">www.zemosolabs.com</a>
 			</div>
 			<div class="body">					
-				<p class="heading">MAJOR IMPLEMENTATION EXPERIENCE:</p>
+				<p class="heading">
+					<%if(projects.name.length>0){%>SOME PRIOR IMPLEMENTATION EXPERIENCE:<%}
+					else{%>MAJOR IMPLEMENTATION EXPERIENCE<%}%></p>
 				<hr class="underline_3">
 				<div id="project" class="project">
 					<div class="project_block">
@@ -439,7 +481,7 @@
 							<p><%=prior_projects_description[j]%></p><%}}%>
 						</div>
 						</div>
-						<%}if(prior_proj_images[0][1]){%>
+						<%}if(prior_proj[0]){%>
 					
 						<div id="project_block_bottom">
 						<div id="project_im">
@@ -452,7 +494,12 @@
 
 							<img class="project_image" src=<%="./images/full_stack/"+prior_proj_images[0][j]%>></img>
 
-							<%}}%>
+							<%}else if(prior_proj_images[0][j]==false){%>
+							<div class="skill_image">
+								<p class="noimage_top"><%=prior_proj[0][j]%></p>
+								<p class="noimage_bottom"><%=prior_proj[0][j]%></p>
+							</div>
+						<%}}%>
 						</div>
 						<%}if(prior_projects.contribution){%>
 						<div class="side-heading">
@@ -485,5 +532,13 @@
 		</div>
 
 	</div>
+	<script type="text/javascript" src="./scripts/sweetalert.min.js"></script>
+	<script type="text/javascript" src="./files/javascript/resume.js"></script>
+	<script type="text/javascript">
+						var max = Math.max(<%=server_side_images.length%> || 0 ,
+										   <%=front_end_images.length%> || 0,
+										   <%=databases_images.length%> || 0,
+										   <%=technologies_images.length%> || 0 )
+						adjustSkills(max);</script>
 </body>
 </html>

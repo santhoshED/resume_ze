@@ -1,5 +1,12 @@
 'use strict';
 
+function handlePreview(){
+	document.getElementById('server_side_select').value = ChosenOrder.getSelectionOrder(document.getElementById('server_side'));
+	document.getElementById('front_end_select').value = ChosenOrder.getSelectionOrder(document.getElementById('front_end'));
+	document.getElementById('databases_select').value = ChosenOrder.getSelectionOrder(document.getElementById('databases'));
+	document.getElementById('technologies_select').value = ChosenOrder.getSelectionOrder(document.getElementById('technologies'));
+	document.getElementById('form').submit();
+}
 function renderUniversities(){
 	const universities = Object.keys(database.UNIVERSITIES);
 	for(var i=0;i<universities.length;i++){
@@ -10,7 +17,7 @@ function renderSkills(){
 	
 	const technologies = Object.keys(database.TECHNOLOGIES).sort();
 	for(var i=0;i<technologies.length;i++){
-		$(".skillSelect").append(`<option value='${technologies[i]}'>${technologies[i]}</option>`);
+		$('.skillSelect').append(`<option value='${technologies[i]}'>${technologies[i]}</option>`);
 	}
 }
 
@@ -152,10 +159,9 @@ function addProjectBlock(proj){
 	side_heading.innerHTML= "Technologies:";
 
 	var selectelem = document.createElement("select");
-	selectelem.className="multipleSelect form-control";
+	selectelem.className="chosen form-control";
 	selectelem.setAttribute("multiple","true");
 	selectelem.setAttribute("title","Technologies");
-	selectelem.setAttribute("data-live-search","true");
 	selectelem.setAttribute("name","proj["+(proj)+"]");
 	selectelem.innerHTML += `<option class="tech_hack" value="" selected></option>`;
 
@@ -175,7 +181,9 @@ function addProjectBlock(proj){
 
 	document.getElementById('project').appendChild(node);
 
-	$('.multipleSelect').fastselect();
+	$(document).ready(function(){
+		$(".chosen").chosen();
+	});
 	defaultOption();
 }
 
@@ -231,10 +239,9 @@ function addPriorProjectBlock(prior_proj){
 	side_heading.innerHTML= "Technologies:";
 
 	var selectelem = document.createElement("select");
-	selectelem.className="multipleSelect form-control";
+	selectelem.className="chosen form-control";
 	selectelem.setAttribute("multiple","true");
 	selectelem.setAttribute("title","Technologies");
-	selectelem.setAttribute("data-live-search","true");
 	selectelem.setAttribute("name",`prior_proj[${++prior_proj}]`);
 	selectelem.innerHTML += `<option class="tech_hack" value="" selected></option>`;
 
@@ -254,7 +261,9 @@ function addPriorProjectBlock(prior_proj){
 
 	document.getElementById('prior_project').appendChild(node);
 
-	$('.multipleSelect').fastselect();
+	$(document).ready(function(){
+		$(".chosen").chosen();
+	});
 	defaultOption();
 }
 

@@ -15,11 +15,13 @@ body{
 	.indexpage{
 		width: 100%;
 		/*min-height: 72.8125em; #70.5315em;*/
+		padding:0em 0.75em 0.5em 0.75em;
 	}
 	.page{
 		width:100%;
 		/*min-height: 73.3125em; #71.0315em; */
 		page-break-before: always;
+		padding:0em 0.75em 0em 0.75em;
 	}
 		.header{
 			display:flex;
@@ -166,6 +168,17 @@ body{
 		height:3.875em;
 		margin:0em 0.5em 0.25em 0em !important;
 	}
+	.noimage_top{
+		font-size:0.8em;
+		color:#666666;
+		font-weight: 300;
+	}
+	.noimage_bottom{
+		border:0.5em solid #f2f2f2;
+		color:#666666;
+		padding:0.4em 0.75em;
+		font-size:0.9em;
+	}
 	.skill_images{
 		display:flex;
 		flex-wrap:wrap;
@@ -221,11 +234,11 @@ body{
 	position: relative;
 }
 	.project_block{
-		margin-bottom: 2.5em;
 		display: flex;
 		flex-direction:column;
 		position: relative;
 	}
+
 		.project_name,.project_name_1{
 		  	font-size: 1em;
 		  	font-weight: normal;
@@ -294,4 +307,3 @@ body{
     	display:none;
     }
 }
-
