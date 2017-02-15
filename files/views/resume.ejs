@@ -84,10 +84,9 @@
 								if(i==workex.designation.length-1|| workex.designation[i+1].length ==0|| i == 4){img_2="./images/vector/start.png"}
 									else{img_2="./images/vector/large.png"}
 								%>
-									<img class="vector-image" src=<%=img_1%>></img>
+									<img class="vector-image_small" src=<%=img_1%>></img>
 									<img class="vector-image_1" src="./images/vector/circle.png"/>
-									<img class="vector-image" src="./images/vector/small.png"/>
-									<img class="vector-image" src=<%=img_2%>></img>
+									<img class="vector-image_large" src=<%=img_2%>></img>
 								</div>
 								<div class="work_experience_content">
 									<p class="work_ex_designation"><%=workex.designation[i]%></p>
@@ -100,10 +99,9 @@
 							else{%>
 							<div class="work_experience_block">
 								<div class="work_experience_vector">
-									<img class="vector-image" src="./images/vector/arrow.png"/>
+									<img class="vector-image_small" src="./images/vector/arrow.png"/>
 									<img class="vector-image_1" src="./images/vector/circle.png"/>
-									<img class="vector-image" src="./images/vector/small.png"/>
-									<img class="vector-image" src="./images/vector/start.png"/>
+									<img class="vector-image_large" src="./images/vector/start.png"/>
 								</div>
 								<div class="work_experience_content">
 									<p class="work_ex_designation"><%=workex.designation%></p>
@@ -363,9 +361,10 @@
 			</div>
 			<div class="body">					
 				<p class="heading">
-					<%if(projects.name.length>0){%>SOME PRIOR IMPLEMENTATION EXPERIENCE:<%}
-					else{%>MAJOR IMPLEMENTATION EXPERIENCE<%}%></p>
-				<hr class="underline_3">
+					<%if(projects.name.length>0){%>SOME PRIOR IMPLEMENTATION EXPERIENCE:</p>
+				<hr class="underline_3"><%}
+					else{%>MAJOR IMPLEMENTATION EXPERIENCE:</p>
+				<hr class="underline_4"><%}%>
 				<div id="project" class="project">
 					
 				<div class="project_block">

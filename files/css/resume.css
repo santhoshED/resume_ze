@@ -82,6 +82,14 @@ body{
 	}
 	.underline_3{
 		margin:0.0625em 0em 0.5em 0em;
+		width:23.175em;
+		height:0.0625em;
+		color:rgba(0, 0, 0, 0.1);
+		border:0;
+		border-top: 0.0625em solid #eee;
+	}
+	.underline_4{
+		margin:0.0625em 0em 0.5em 0em;
 		width:25.875em;
 		height:0.0625em;
 		color:rgba(0, 0, 0, 0.1);
@@ -198,12 +206,18 @@ body{
 			flex-direction:column;
 			align-items:center;
 		}
-			.vector-image{
+			.vector-image_small{
 				padding-right: 0.75em;
+				height:1.5em;
 			}
 			.vector-image_1{
 				margin:0.25em 0em !important;
 				padding-right: 0.75em;
+				width:0.8em;
+			}
+			.vector-image_large{
+				padding-right: 0.75em;
+				height:2.2em;
 			}
 
 		.work_ex_designation{
@@ -298,6 +312,9 @@ body{
 }
 
 @media print{
+	@page{
+		orphans:4; widows:2;
+	}
     #project_im{
         page-break-inside: auto!important;
         position:relative!important;
@@ -307,3 +324,4 @@ body{
     	display:none;
     }
 }
+@page{orphans:4; widows:2;}
