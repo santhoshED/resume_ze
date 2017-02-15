@@ -312,9 +312,6 @@ body{
 }
 
 @media print{
-	@page{
-		orphans:4; widows:2;
-	}
     #project_im{
         page-break-inside: auto!important;
         position:relative!important;
@@ -324,4 +321,6 @@ body{
     	display:none;
     }
 }
-@page{orphans:4; widows:2;}
+@page page{
+	size:auto;
+	margin:2cm;}

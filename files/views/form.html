@@ -1,321 +1,204 @@
 <!Doctype html>
 <html>
+
 <head>
-	<title>Resume</title>
-	<link rel="stylesheet" type="text/css" href="./files/css/form.css">
-
-	<link rel="stylesheet" type="text/css" href="./scripts/bootstrap.css">
-	<link rel="stylesheet" href="./scripts/bootstrap-select.min.css">
-	<link rel="stylesheet" href="./scripts/chosen/chosen.css">
-	
-	
-	<script src="./scripts/jquery.min.js"></script>
-	<script src="./scripts/chosen/chosen.jquery.min.js"></script>
-	<script src="./scripts/chosen/chosen.sortable.js"></script>
-  	<script src="./scripts/bootstrap.min.js"></script>
-  	<script src="./scripts/bootstrap-select.min.js"></script>
-  	<script href="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>  	
-  	
-  	<script type="text/javascript"src="./scripts/constants/masterdb.js"></script>
-  	<script type="text/javascript" src="./files/javascript/form.js"></script>
-
+    <title>Resume</title>
+    <link rel="stylesheet" type="text/css" href="./files/css/form.css">
+    <link rel="stylesheet" type="text/css" href="./scripts/bootstrap.css">
+    <link rel="stylesheet" href="./scripts/bootstrap-select.min.css">
+    <link rel="stylesheet" href="./scripts/chosen/chosen.css">
+    <script src="./scripts/jquery.min.js"></script>
+    <script src="./scripts/chosen/chosen.jquery.min.js"></script>
+    <script src="./scripts/chosen/chosen.sortable.js"></script>
+    <script src="./scripts/bootstrap.min.js"></script>
+    <script src="./scripts/bootstrap-select.min.js"></script>
+    <script href="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
+    <script type="text/javascript" src="./scripts/constants/masterdb.js"></script>
+    <script type="text/javascript" src="./files/javascript/form.js"></script>
 </head>
+
 <body>
-	<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div style="display:flex;justify-content:center;font-size:18px">
-        <div class="navbar-header">
-            <p class="navbar-brand" style="color:#ff751a;font-weight:800" >Zemoso</p>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div style="display:flex;justify-content:center;font-size:18px">
+                <div class="navbar-header">
+                    <p class="navbar-brand" style="color:#ff751a;font-weight:800">Zemoso</p>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-center">
+                        <li><a href="/">Add New</a></li>
+                        <li><a href="/resumes">Resumes</a></li>
+                        <li><a href="/masterdb">Master DB</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-center">
-                <li><a href="/">Add New</a></li>
-                <li><a href="/resumes">Resumes</a></li>
-                <li><a href="/masterdb">Master DB</a></li>
-            </ul>
+    </nav>
+    <div class="wrapper">
+        <div class="header">
+            <img class="logo" src="./images/logo.png" />
+            <a href="./zemosolabs" class="url">www.zemosolabs.com</a>
+        </div>
+        <div class="body">
+            <form id="form" action="/preview" method="POST" target="_blank">
+                <div class="employee_name input-group">
+                    <input class="form-control" type="text" name="employee_name" placeholder="Employee Name" />
+                    <input class="form-control employee_position" type="text" name="employee_position" placeholder="Current Designation" />
+                    <input class="form-control employee_location" type="text" name="employee_location" placeholder="Location" />
+                    <input class="form-control employee_id" type="text" name="employee_id" placeholder="Employee ID" required/>
+                </div>
+                <div class="res_row">
+                    <div class="res_col">
+                        <p class="heading">SUMMARY</p>
+                        <hr class="underline">
+                        <div class="form-group">
+                            <textarea class="form-control" type="text" name="summary" rows="12"></textarea>
+                        </div>
+                    </div>
+                    <div class="res_col_2">
+                        <p class="heading">EDUCATION</p>
+                        <hr class="underline_2">
+                        <div id="education" class="education form-group">
+                            <div class="education_block form-group">
+                                <select id="CollegeSelect" class="selectpicker form-control education-group" name="college[][name]" title="College Name" required data-live-search="true">
+                                </select>
+                                <input class="form-control education-group" type="text" name="college[][degree]" placeholder="Degree" />
+                                <input class="form-control education_year" type="text" name="college[][year]" placeholder="Graduation Year" />
+                            </div>
+                        </div>
+                        <button type="button" class="add btn btn-default" onClick="addCollegeBlock()">ADD</button>
+                    </div>
+                </div>
+                <div class="res_row">
+                    <div class="res_col">
+                        <p class="heading">WORK EXPERIENCE</p>
+                        <hr class="underline">
+                        <div id="work_experience" class="form-group">
+                            <div class="work_experience_block input-group form-group">
+                                <input class="form-control work-group" type="text" name="workexperience[][designation]" placeholder="Designation" />
+                                <input class="form-control work-group" type="text" name="workexperience[][organisation]" placeholder="Organisation Name" />
+                                <div class="input-group work-group">
+                                    <input type="text" class="form-control" name="workexperience[][from]" placeholder="Month, Year">
+                                    <span class="input-group-addon">To</span>
+                                    <input type="text" class="form-control" name="workexperience[][to]" placeholder="Month, Year">
+                                </div>
+                                <input class="form-control" type="text" name="workexperience[][place]" placeholder="City, Country" />
+                            </div>
+                        </div>
+                        <button type="button" class="add btn btn-default" onClick="addWorkBlock()">ADD</button>
+                    </div>
+                    <div class="res_col_2">
+                        <p class="heading">SKILLS</p>
+                        <hr class="underline_2">
+                        <div class="skills form-group">
+                            <p class="skill_heading">Server Side:</p>
+                            <select id="server_side" class="chosen form-control skillSelect" multiple="true">
+                            </select>
+                            <input id="server_side_select" type="text" name="server_side[]" style="display:none" />
+                            <br>
+                            <p class="skill_heading">Front End:</p>
+                            <select id="front_end" class="chosen form-control skillSelect" multiple>
+                            </select>
+                            <input id="front_end_select" type="text" name="front_end[]" style="display:none" />
+                            <br>
+                            <p class="skill_heading">DataBases:</p>
+                            <select id="databases" class="chosen form-control skillSelect" multiple>
+                            </select>
+                            <input id="databases_select" type="text" name="databases[]" style="display:none" />
+                            <br>
+                            <p class="skill_heading">Architectures & Cloud Services:</p>
+                            <select id="technologies" class="chosen form-control skillSelect" multiple>
+                            </select>
+                            <input id="technologies_select" type="text" name="technologies[]" style="display:none" />
+                        </div>
+                    </div>
+                </div>
+                <div class="res_row">
+                    <div class="res_col_3">
+                        <p class="heading">IMPLEMENTATION EXPERIENCE AT ZEMOSO TECHNOLOGIES</p>
+                        <hr class="underline_3">
+                        <div id="project" class="project form-group">
+                            <div id="0" class="form-group project_block">
+                                <div class="input-group project-group">
+                                    <input class="form-control" type="text" name="projects[][name]" placeholder="Project Name" />
+                                </div>
+                                <div class="input-group project-group">
+                                    <p class="side-heading">Description:</p>
+                                    <textarea class="form-control" type="text" name="projects[][description]" rows="6"></textarea>
+                                </div>
+                                <div class="input-group project-group">
+                                    <p class="side-heading">Approach:</p>
+                                    <textarea class="form-control" type="text" name="projects[][approach]" rows="5"></textarea>
+                                </div>
+                                <div class="input-group project-group">
+                                    <p class="side-heading">Contribution:</p>
+                                    <textarea class="form-control" type="text" name="projects[][contribution]" rows="3"></textarea>
+                                </div>
+                                <div class="input-group project-group">
+                                    <p class="side-heading">Duration:</p>
+                                    <input class="form-control" type="text" name="projects[][duration]" placeholder="Duration" />
+                                </div>
+                                <div class="form-group project-group">
+                                    <p class="side-heading">Technologies:</p>
+                                    <select class="chosen form-control skillSelect" multiple placeHolder="Technologies" name="proj[0]">
+                                        <option class="tech_hack" value="" selected></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="add btn btn-default" onClick="getlastid()">ADD</button>
+                    </div>
+                </div>
+                <div class="res_row">
+                    <div class="res_col_3">
+                        <p class="heading">SOME PRIOR IMPLEMENTATION EXPERIENCE</p>
+                        <hr class="underline_3">
+                        <div id="prior_project" class="project">
+                            <div id="0" class="form-group project_block">
+                                <div class="input-group project-group">
+                                    <input class="form-control" type="text" name="prior_projects[][name]" placeholder="Project Name" />
+                                </div>
+                                <div class="input-group project-group">
+                                    <p class="side-heading">Description:</p>
+                                    <textarea class="form-control" type="text" name="prior_projects[][description]" rows="6"></textarea>
+                                </div>
+                                <div class="input-group project-group">
+                                    <p class="side-heading">Approach:</p>
+                                    <textarea class="form-control" type="text" name="prior_projects[][approach]" rows="5"></textarea>
+                                </div>
+                                <div class="input-group project-group">
+                                    <p class="side-heading">Contribution:</p>
+                                    <textarea class="form-control" type="text" name="prior_projects[][contribution]" rows="3"></textarea>
+                                </div>
+                                <div class="input-group project-group">
+                                    <p class="side-heading">Duration:</p>
+                                    <input class="form-control" type="text" name="prior_projects[][duration]" placeholder="Duration" />
+                                </div>
+                                <div class=" form-group project-group">
+                                    <p class="side-heading">Technologies:</p>
+                                    <select id="prior_fullStackSelect" class="chosen form-control skillSelect" multiple placeHolder="Technologies" name="prior_proj[0]">
+                                        <option class="tech_hack" value="" selected></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="add btn btn-default" onClick="getlastid_prior()">ADD</button>
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <button class="btn btn-primary submit" onclick="handlePreview()">Preview</button>
+                </div>
+            </form>
         </div>
     </div>
-    </div>
-	</nav>
-	<div class="wrapper">
-		<div class="header">
-			<img class="logo" src="./images/logo.png"/>
-			<a href="./zemosolabs" class="url">www.zemosolabs.com</a>
-		</div>
-		<div class="body">
-			<form  id ="form" action="/preview" method="POST" target="_blank">
-				<div class ="employee_name input-group">
-					<input 
-						class="form-control" 
-						type="text" 
-						name="employee_name"
-						placeholder="Employee Name"/>
-					<input
-						class="form-control employee_position" 
-						type="text" 
-						name="employee_position"
-						placeholder="Current Designation"/>
-					<input 
-						class="form-control employee_location" 
-						type="text" 
-						name="employee_location"
-						placeholder="Location"/>
-					<input 
-						class="form-control employee_id" 
-						type="text" 
-						name="employee_id"
-						placeholder="Employee ID"
-						required/>
-				</div>
-				<div class="res_row">
-					<div class="res_col">
-						<p class="heading">SUMMARY</p>
-						<hr class="underline">
-						<div class="form-group">
-							<textarea 
-								class="form-control" 
-								type="text" 
-								name="summary"  
-								rows="12"></textarea>
-						</div> 
-					</div>
-					<div class="res_col_2">
-						<p class="heading">EDUCATION</p>
-						<hr class="underline_2">
-						<div id="education" class="education form-group">
-							<div class="education_block form-group">
-								<select
-									id="CollegeSelect" 
-									class="selectpicker form-control education-group" 
-									name="college[][name]" 
-									title="College Name"
-									required 
-									data-live-search="true">  
-								</select>
-								<input 
-									class="form-control education-group" 
-									type="text" 
-									name="college[][degree]"
-									placeholder="Degree"/>
-								<input 
-									class="form-control education_year" 
-									type="text" 
-									name="college[][year]"
-									placeholder="Graduation Year"/>
-							</div>
-						</div>
-						<button type="button" class="add btn btn-default" onClick="addCollegeBlock()">ADD</button>
-					</div>
-				</div>
-				<div class="res_row">
-					<div class="res_col">
-						<p class="heading">WORK EXPERIENCE</p>
-						<hr class="underline">
-						<div id="work_experience"class="form-group">
-							<div class="work_experience_block input-group form-group">
-								<input 
-									class="form-control work-group" 
-									type="text" 
-									name="workexperience[][designation]"
-									placeholder="Designation"/>
-								<input 
-									class="form-control work-group" 
-									type="text" 
-									name="workexperience[][organisation]"
-									placeholder="Organisation Name"/>
-								<div class="input-group work-group">
-								  <input 
-								  	type="text" 
-								  	class="form-control"
-								  	name="workexperience[][from]" 
-								  	placeholder="Month, Year">
-								  <span class="input-group-addon">To</span>
-								  <input 
-								  	type="text" 
-								  	class="form-control"
-								  	name="workexperience[][to]" 
-								  	placeholder="Month, Year">
-								</div>
-								<input 
-									class="form-control" 
-									type="text" 
-									name="workexperience[][place]"
-									placeholder="City, Country"/>
-							</div>	
-						</div>
-						<button type="button" class="add btn btn-default" onClick="addWorkBlock()">ADD</button>
-					</div>
-					<div class="res_col_2">
-						<p class="heading">SKILLS</p>
-						<hr class="underline_2">
-						<div class ="skills form-group">
-							<p class="skill_heading">Server Side:</p>
-							<select 
-								id="server_side"
-								class="chosen form-control skillSelect" 
-								multiple="true">
-							</select>
-							<input id="server_side_select" type="text" name="server_side[]" style="display:none"/>
-							<br>
-							<p class="skill_heading">Front End:</p>
-							<select 
-								id="front_end"
-								class="chosen form-control skillSelect" 
-								multiple >
-							</select>
-							<input id="front_end_select" type="text" name="front_end[]" style="display:none"/>
-							<br>
-							<p class="skill_heading">DataBases:</p>
-							<select 
-								id="databases"
-								class="chosen form-control skillSelect" 
-								multiple >
-							</select>
-							<input id="databases_select" type="text" name="databases[]" style="display:none"/>
-							<br>
-							<p class="skill_heading">Architectures & Cloud Services:</p>
-							<select
-								id="technologies" 
-								class="chosen form-control skillSelect" 
-								multiple >
-							</select>
-							<input id="technologies_select" type="text" name="technologies[]" style="display:none"/>
-						</div>
-					</div>
-				</div>
-				<div class="res_row">
-					<div class="res_col_3">
-						<p class="heading">IMPLEMENTATION EXPERIENCE AT ZEMOSO TECHNOLOGIES</p>
-						<hr class="underline_3">
-						<div id="project" class="project form-group">
-							<div id="0" class="form-group project_block">
-								<div class="input-group project-group">
-									<input 
-										class="form-control" 
-										type="text" 
-										name="projects[][name]"
-										placeholder="Project Name"/>
-								</div>
-								<div class="input-group project-group">
-									<p class="side-heading">Description:</p>
-									<textarea 
-										class="form-control" 
-										type="text" 
-										name="projects[][description]" 
-										rows="6"></textarea>
-								</div>
-								<div class="input-group project-group">
-									<p class="side-heading">Approach:</p>
-									<textarea 
-										class="form-control" 
-										type="text" 
-										name="projects[][approach]" 
-										rows="5"></textarea>
-								</div>
-								<div class="input-group project-group">
-									<p class="side-heading">Contribution:</p>
-									<textarea 
-										class="form-control" 
-										type="text" 
-										name="projects[][contribution]" 
-										rows="3"></textarea>
-								</div>
-								<div class="input-group project-group">
-									<p class="side-heading">Duration:</p>
-									<input 
-									class="form-control" 
-									type="text" 
-									name="projects[][duration]"
-									placeholder="Duration"/>
-								</div>
-								<div class="form-group project-group">
-									<p class="side-heading">Technologies:</p>
-									<select 
-										class="chosen form-control skillSelect" 
-										multiple 
-										placeHolder="Technologies" 
-										name="proj[0]">
-										<option class="tech_hack" value ="" selected></option>
-									</select>
-								</div>
-							</div>
-						</div>
-						<button type="button" class="add btn btn-default" onClick="getlastid()">ADD</button>
-					</div>	
-				</div>
-            	<div class="res_row">
-					<div class="res_col_3">
-						<p class="heading">SOME PRIOR IMPLEMENTATION EXPERIENCE</p>
-						<hr class="underline_3">
-						<div id="prior_project" class="project">
-						<div id="0" class="form-group project_block">
-							<div class="input-group project-group">
-								<input 
-									class="form-control" 
-									type="text" 
-									name="prior_projects[][name]"
-									placeholder="Project Name"/>
-							</div>
-							<div class="input-group project-group">
-								<p class="side-heading">Description:</p>
-								<textarea 
-									class="form-control" 
-									type="text" 
-									name="prior_projects[][description]"  
-									rows="6"></textarea>
-							</div>
-							<div class="input-group project-group">
-								<p class="side-heading">Approach:</p>
-								<textarea 
-									class="form-control" 
-									type="text" 
-									name="prior_projects[][approach]"  
-									rows="5"></textarea>
-							</div>
-							<div class="input-group project-group">
-								<p class="side-heading">Contribution:</p>
-								<textarea 
-									class="form-control" 
-									type="text" 
-									name="prior_projects[][contribution]"
-									rows="3"></textarea>
-							</div>
-							<div class="input-group project-group">
-								<p class="side-heading">Duration:</p>
-								<input 
-								class="form-control" 
-								type="text" 
-								name="prior_projects[][duration]"
-								placeholder="Duration"/>
-							</div>
-							<div class=" form-group project-group">
-								<p class="side-heading">Technologies:</p>
-								<select
-									id="prior_fullStackSelect" 
-									class="chosen form-control skillSelect"
-									multiple 
-									placeHolder="Technologies" 
-									name="prior_proj[0]">
-									<option class="tech_hack" value="" selected></option>
-								</select>
-							</div>
-						</div>
-						</div>
-						<button type="button" class="add btn btn-default" onClick="getlastid_prior()">ADD</button>
-					</div>	
-				</div>
-				<div class='form-group'>
-           		    	 <button class="btn btn-primary submit" onclick="handlePreview()">Preview</button>
-            	</div>
-			</form>
-		</div>
-	</div>
-	<script type="text/javascript">
-	renderUniversities();renderSkills();
-	defaultOption();
-	$(document).ready(function(){
-		$(".chosen").chosen();
-	});
-	</script>
+    <script type="text/javascript">
+    renderUniversities();
+    renderSkills();
+    defaultOption();
+    $(document).ready(function() {
+        $(".chosen").chosen();
+    });
+    </script>
 </body>
+
 </html>
