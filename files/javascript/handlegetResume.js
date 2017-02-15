@@ -10,7 +10,6 @@ module.exports = (req, res) => {
 	dbQuery.find({'employee_id':id},{'employee_id':1}).count()
 	.then((el)=>{
 		if(el>0){
-			console.log(el);
 			dbQuery.findOne({'employee_id': id}, (err, result) => {
 		    	if(err){
 		    		return res.render('./error.ejs', {err: err});
@@ -25,7 +24,6 @@ module.exports = (req, res) => {
 				
 				const front_end = info.front_end[0].split(',') ||[];
 				
-				console.log(server_side);
 				
 				return res.render('./editableform.ejs', {
 								employee_name:info.employee_name,

@@ -14,15 +14,16 @@ function handlePrint() {
 }
 
 function adjustSkills(maxid){
-	var height = document.getElementById('skills').offsetHeight;
-	var max = maxid;
+	var height = $('#skills').height();
+	var max = maxid-1;
 	while(height > 400){
 		var id = max+"im";
 		var elements = document.getElementsByClassName(id);
-		 while(elements.length > 0){
-        elements[0].parentNode.removeChild(elements[0]);
-    }
+		while(elements.length > 0 && height > 400){
+	        elements[0].parentNode.removeChild(elements[0]);
+	        height = $('#skills').height();
+	    }
 		max--;
-		height = document.getElementById('skills').offsetHeight;
+		height = $('#skills').height();
 	}
 }

@@ -532,13 +532,17 @@
 		</div>
 
 	</div>
+	<script src="./scripts/jquery.min.js"></script>
 	<script type="text/javascript" src="./scripts/sweetalert.min.js"></script>
 	<script type="text/javascript" src="./files/javascript/resume.js"></script>
 	<script type="text/javascript">
-						var max = Math.max(<%=server_side_images.length%> || 0 ,
-										   <%=front_end_images.length%> || 0,
-										   <%=databases_images.length%> || 0,
-										   <%=technologies_images.length%> || 0 )
-						adjustSkills(max);</script>
+		$(window).load(function(){
+		  	var max = Math.max(<%=server_side_images.length%> || 0 ,
+						       <%=front_end_images.length%> || 0,
+						       <%=databases_images.length%> || 0,
+						       <%=technologies_images.length%> || 0 )
+			adjustSkills(max);
+		});
+	</script>
 </body>
 </html>
