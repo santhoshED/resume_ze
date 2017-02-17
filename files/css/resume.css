@@ -15,13 +15,13 @@ body{
 	.indexpage{
 		width: 100%;
 		/*min-height: 72.8125em; #70.5315em;*/
-		padding:0em 0.75em 0.5em 0.75em;
+		padding:0em 0.75em 1.25em 0.75em;
 	}
 	.page{
 		width:100%;
 		/*min-height: 73.3125em; #71.0315em; */
 		page-break-before: always;
-		padding:0em 0.75em 0em 0.75em;
+		padding:0em 0.75em 1.25em 0.75em;
 	}
 		.header{
 			display:flex;
@@ -217,7 +217,7 @@ body{
 			}
 			.vector-image_large{
 				padding-right: 0.75em;
-				height:2.2em;
+				height:2.4em;
 			}
 
 		.work_ex_designation{
@@ -321,6 +321,3 @@ body{
     	display:none;
     }
 }
-@page page{
-	size:auto;
-	margin:2cm;}

@@ -15,7 +15,6 @@
     "ejs": "^2.5.5",
     "express": "^4.14.0",
     "express-fileupload": "0.0.6",
-    "fastselect": "^0.7.2",
     "fs": "0.0.1-security",
     "jquery": "^3.1.1",
     "mongodb": "^2.2.22",

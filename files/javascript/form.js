@@ -25,6 +25,7 @@ function renderSkills() {
 
 
 function addCollegeBlock() {
+	if(document.getElementById("education").lastElementChild.id == "ed_0"){
     var node = document.createElement("div");
     node.className = "education_block form-group";
 
@@ -57,6 +58,7 @@ function addCollegeBlock() {
 
     $('.selectpicker').selectpicker('render');
     renderUniversities();
+}
 }
 
 function addWorkBlock() {
@@ -99,20 +101,20 @@ function addWorkBlock() {
 
 function getlastid() {
     var proj = document.getElementById("project").lastElementChild.id;
-    var p = parseInt(proj) + 1;
+    var p = parseInt(proj.split('_').pop()) + 1;
     addProjectBlock(p);
 }
 
 function getlastid_prior() {
     var proj = document.getElementById("prior_project").lastElementChild.id;
-    var p = parseInt(proj) + 1;
+    var p = parseInt(proj.split('_').pop()) + 1;
     addPriorProjectBlock(p);
 }
 
 function addProjectBlock(proj) {
 
     var node = document.createElement("div");
-    node.setAttribute("id", proj);
+    node.setAttribute("id", "p_"+proj);
     node.className = "form-group project_block";
 
     node.innerHTML += `<div class="input-group project-group">
@@ -193,7 +195,7 @@ function addProjectBlock(proj) {
 
 function addPriorProjectBlock(prior_proj) {
     var node = document.createElement("div");
-    node.setAttribute("id", prior_proj);
+    node.setAttribute("id", "pr_"+prior_proj);
     node.className = "form-group project_block";
     node.innerHTML += `<div class="input-group project-group">
 								<input 

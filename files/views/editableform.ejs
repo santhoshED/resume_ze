@@ -82,7 +82,8 @@
 							<textarea 
 								class="form-control" 
 								type="text" 
-								name="summary"  
+								name="summary"
+								maxlength="500"  
 								rows="12"><%=summary%></textarea>
 						</div> 
 					</div>
@@ -281,7 +282,7 @@
 							if(projects.name.constructor===Array){ 
 							for(var i=0;i<projects.name.length;i++){
 								if(projects.name[i].length>0){%>
-						<div id='<%=i%>' class="form-group project_block">
+						<div id='p_<%=i%>' class="form-group project_block">
 							<div class="input-group project-group">
 								<input 
 									class="form-control" 
@@ -339,7 +340,7 @@
 						
 						<%}}}
 						else{%>
-						<div class="form-group project_block">
+						<div id="p_0" class="form-group project_block">
 							<div class="input-group project-group">
 								<input 
 									class="form-control" 
@@ -395,7 +396,7 @@
 						</div>
 						
 						<%}}else{%>
-						<div id ="0" class="form-group project_block">
+						<div id ="p_0" class="form-group project_block">
 							<div class="input-group project-group">
 								<input 
 									class="form-control" 
@@ -461,7 +462,7 @@
 							if(prior_projects.name.constructor===Array){ 
 							for(var i=0;i<prior_projects.name.length;i++){
 								if(prior_projects.name[i].length>0){%>
-						<div id='<%=i%>'class="form-group project_block">
+						<div id='pr_<%=i%>'class="form-group project_block">
 							<div class="input-group project-group">
 								<input 
 									class="form-control" 
@@ -518,7 +519,7 @@
 						
 						<%}}}
 						else{%>
-						<div id="0" class="form-group project_block">
+						<div id="pr_0" class="form-group project_block">
 							<div class="input-group project-group">
 								<input 
 									class="form-control" 
@@ -574,7 +575,7 @@
 						</div>
 						
 						<%}}else{%>
-						<div id="0"class="form-group project_block">
+						<div id="pr_0"class="form-group project_block">
 							<div class="input-group project-group">
 								<input 
 									class="form-control" 

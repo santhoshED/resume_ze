@@ -4,6 +4,7 @@
 	<title>RESUME</title>
 	<link rel="stylesheet" type="text/css" href="./scripts/sweetalert.css">
 	<link rel="stylesheet" type="text/css" href="./files/css/resume.css">
+	<script src="./scripts/jquery.min.js"></script>
 </head>
 <body>
 	<div class="wrapper">
@@ -190,7 +191,7 @@
 			if(projects.name.constructor===Array){ 
 						for(var i=0;i<projects.name.length;i++){
 							if(projects.name[i].length>0){%>
-		<div class="page">
+		<div id="p_<%=i%>"class="page">
 			<div class="header">
 				<img class="logo" src="./images/logo.png"/>
 				<a class="url">www.zemosolabs.com</a>
@@ -201,7 +202,7 @@
 				<div id="project" class="project">
 					
 					<div class="project_block">
-						<div id="project_block_top">
+						<div id="project_block_top_<%=i%>">
 						<div>
 							<p class="project_name">Project Name:</p>
 							<p class="project_name_1"><%=projects.name[i]%></p>
@@ -228,7 +229,7 @@
 							<p><%=projects_description[j]%></p><%}}%>
 						</div>
 					</div>
-					<div id="project_block_bottom">
+					<div id="project_block_bottom_<%=i%>">
 						<div id ="project_im">
 						<div class="side-heading">
 							<p>Technologies:</p>
@@ -269,9 +270,15 @@
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript">
+		$(window).load(function(){
+		  	
+			adjustProjects('p_<%=i%>');
+		});
+		</script>
 					<%}}}
 					else{%>
-		<div class="page">
+		<div id="p_0" class="page">
 			<div class="header">
 				<img class="logo" src="./images/logo.png"/>
 				<a class="url">www.zemosolabs.com</a>
@@ -281,7 +288,7 @@
 				<hr class="underline_2">
 				<div id="project" class="project">
 					<div class="project_block">
-						<div id="project_block_top">
+						<div id="project_block_top_0">
 						<div>
 							<p class="project_name">Project Name:</p>
 							<p class="project_name_1"><%=projects.name%></p>
@@ -307,7 +314,7 @@
 							<p><%=projects_description[j]%></p><%}}%>
 						</div>
 						</div>
-					<div id="project_block_bottom">
+					<div id="project_block_bottom_0">
 						<div id="project_im">
 						<div class="side-heading">
 							<p>Technologies:</p>
@@ -349,12 +356,18 @@
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript">
+		$(window).load(function(){
+		  	
+			adjustProjects('p_0');
+		});
+		</script>
 			<%}}%>
 			<%if(prior_projects.name.length>0){
 			if(prior_projects.name.constructor===Array){ 
 						for(var i=0;i<prior_projects.name.length;i++){
 							if(prior_projects.name[i].length>0){%>
-		<div class="page">
+		<div id="pr_<%=i%>" class="page">
 			<div class="header">
 				<img class="logo" src="./images/logo.png"/>
 				<a class="url">www.zemosolabs.com</a>
@@ -368,7 +381,7 @@
 				<div id="project" class="project">
 					
 				<div class="project_block">
-					<div id="project_block_top">
+					<div id="project_block_top_<%=i%>">
 						<div>
 							<p class="project_name">Project Name:</p>
 							<p class="project_name_1"><%=prior_projects.name[i]%></p>
@@ -397,7 +410,7 @@
 						<%}%>
 					</div>
 					
-					<div id="project_block_bottom">
+					<div id="project_block_bottom_<%=i%>">
 						<div id="project_im">
 							<% if(prior_proj[i]){%>
 						<div class="side-heading">
@@ -440,9 +453,15 @@
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript">
+		$(window).load(function(){
+		  	
+			adjustProjects('pr_<%=i%>');
+		});
+		</script>
 					<%}}}
 					else{%>
-		<div class="page">
+		<div id="pr_0" class="page">
 			<div class="header">
 				<img class="logo" src="./images/logo.png"/>
 				<a class="url">www.zemosolabs.com</a>
@@ -454,7 +473,7 @@
 				<hr class="underline_3">
 				<div id="project" class="project">
 					<div class="project_block">
-						<div id="project_block_top">
+						<div id="project_block_top_0">
 						<div>
 							<p class="project_name">Project Name:</p>
 							<p class="project_name_1"><%=prior_projects.name%></p>
@@ -482,7 +501,7 @@
 						</div>
 						<%}if(prior_proj[0]){%>
 					
-						<div id="project_block_bottom">
+						<div id="project_block_bottom_0">
 						<div id="project_im">
 						<div class="side-heading">
 							<p>Technologies:</p>
@@ -526,12 +545,17 @@
 					
 				</div>
 			</div>
-			</div>
+		</div>
+		<script type="text/javascript">
+		$(window).load(function(){
+		  	
+			adjustProjects('pr_0');
+		});
+		</script>
 			<%}}%>	
 		</div>
 
 	</div>
-	<script src="./scripts/jquery.min.js"></script>
 	<script type="text/javascript" src="./scripts/sweetalert.min.js"></script>
 	<script type="text/javascript" src="./files/javascript/resume.js"></script>
 	<script type="text/javascript">
