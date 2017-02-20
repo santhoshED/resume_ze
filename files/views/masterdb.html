@@ -38,8 +38,8 @@
                                         <input type="file" name="uni_img" accept="image/*" required>
                                     </div>
                                 </div>
+                                <button class="btn btn-secondary" onclick="handleAdd('uni')" type="submit">Add</button>
                             </form>
-                            <button class="btn btn-secondary" onclick="handleAdd('uni')">Add</button>
                         </div>
                     </div>
                 </div>
@@ -49,14 +49,15 @@
                         <div class="panel-body">
                             <form id="skill" action="/addskill" method="POST" enctype="multipart/form-data">
                                 <div class="form">
-                                    <input class="form-control" type="text" name="skill_name" placeholder="Skill Name" / required>
+                                    <input class="form-control" type="text" name="skill_name" placeholder="Skill Name" required/>
                                     <br>
                                     <div class="form-group">
                                         <input type="file" name="skill_img" accept="image/*">
                                     </div>
                                 </div>
+                                <button class="btn btn-secondary" onclick="handleAdd('skill')" type="submit">Add</button>
                             </form>
-                            <button class="btn btn-secondary" onclick="handleAdd('skill')">Add</button>
+                            
                         </div>
                     </div>
                 </div>
@@ -64,29 +65,29 @@
         </div>
     </div>
     <script type="text/javascript">
-    function handleAdd(id) {
-        sweetAlert({
-                title: "Are you sure?",
-                text: "You will not be able to delete undo this",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Yes, Add it",
-                closeOnConfirm: false
-            },
-            function() {
-                sweetAlert({
-                    title: "Database has been updated",
-                    type: "success",
-                    confirmButtonText: "OK",
-                    closeOnConfirm: true
-                }, function() {
-                    document.getElementById(id).submit();
-                });
+    // function handleAdd(id) {
+    //     sweetAlert({
+    //             title: "Are you sure?",
+    //             text: "You will not be able to delete undo this",
+    //             type: "warning",
+    //             showCancelButton: true,
+    //             confirmButtonColor: "#DD6B55",
+    //             confirmButtonText: "Yes, Add it",
+    //             closeOnConfirm: false
+    //         },
+    //         function() {
+    //             sweetAlert({
+    //                 title: "Database has been updated",
+    //                 type: "success",
+    //                 confirmButtonText: "OK",
+    //                 closeOnConfirm: true
+    //             }, function() {
+    //                 document.getElementById(id).submit();
+    //             });
 
-            });
+    //         });
 
-    }
+    // }
     </script>
 </body>
 
