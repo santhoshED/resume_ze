@@ -202,6 +202,7 @@ function addPriorProjectBlock(prior_proj) {
 									class="form-control" 
 									type="text" 
 									name="prior_projects[][name]"
+									value="Project Name:"
 									placeholder="Project Name"/>
 							</div>
 							<div class="input-group project-group">

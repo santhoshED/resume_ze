@@ -31,7 +31,10 @@ function adjustSkills(maxid) {
 function adjustProjects(pageId){
     var height = $("#"+pageId).height()+20;
     if(height>1136){
+        if(document.getElementById(`project_block_bottom_${pageId.split('_').pop()}`))
         var bottom = document.getElementById(`project_block_bottom_${pageId.split('_').pop()}`).innerHTML;
+        else
+            var bottom = "";
         $("#project_block_bottom_"+pageId.split('_').pop()).remove();
         var node = `<div class="page">
                         <div class="header">
@@ -41,7 +44,7 @@ function adjustProjects(pageId){
                         <div class="body">
                             <div id="project" class="project">
                                 <div class="project_block">
-                                    <div class="side-heading">[...Continues]</div>
+                                    <div class="side-heading">[...Continued]</div>
                                     <div id=long_proj_${pageId}>
                                         <div class="project_content"></div>
                                     </div>

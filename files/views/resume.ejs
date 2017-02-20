@@ -385,8 +385,8 @@
 				<div class="project_block">
 					<div id="project_block_top_<%=i%>">
 						<div>
-							<p class="project_name">Project Name:</p>
-							<p class="project_name_1"><%=prior_projects.name[i]%></p>
+							<p class="project_name"><%= prior_projects.name[i].split(':').length >1 ? "Project Name:":""%></p>
+							<p class="project_name_1"><%=prior_projects.name[i].split(':').pop()%></p>
 						</div>
 					
 						<div class="side-heading">
@@ -477,8 +477,8 @@
 					<div class="project_block">
 						<div id="project_block_top_0">
 						<div>
-							<p class="project_name">Project Name:</p>
-							<p class="project_name_1"><%=prior_projects.name%></p>
+							<p class="project_name"><% prior_projects.name.split(':').length >1 ? "Project Name:":""%></p>
+							<p class="project_name_1"><%=prior_projects.name.split(':').pop()%></p>
 						</div>
 					
 						<div class="side-heading">
