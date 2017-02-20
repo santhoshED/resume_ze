@@ -9,7 +9,8 @@
 <body>
 	<div class="wrapper">
 		<div id ="print">
-			<button class="print" onClick="handlePrint()">PRINT & SAVE</button>
+			<button class="print" onClick="handleSave()">SAVE</button>
+			<button class="print" onClick="handlePrint()">PRINT</button>
 		</div>
 		<div class="indexpage">
 			<div class="header">
@@ -72,8 +73,9 @@
 						<p class="heading">WORK EXPERIENCE</p>
 						<hr class="underline">
 						<div id="work_experience"class="work-experience">
-						<% if(workex.designation.constructor === Array){ 
-						for(var i=0;i<5;i++){
+						<% if(workex.designation.constructor === Array){
+
+						for(var i=0;i<workex.designation.length && i<5;i++){
 							if(workex.designation[i].length>0){%>
 							<div class="work_experience_block">
 								<div class="work_experience_vector">

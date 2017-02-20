@@ -1,19 +1,18 @@
 'use strict';
 
-function handlePrint() {
+function handleSave() {
     sweetAlert({
             title: "Your file has been saved",
-            text: "Proceed to print!",
             type: "success",
             showCancelButton: false,
-            confirmButtonText: "OK! print",
+            confirmButtonText: "OK! ",
             closeOnConfirm: true
-        },
-        function() {
-            setTimeout(function() { window.print(); }, 1000);
-        });
+        })
 }
 
+function handlePrint(){
+    window.print();
+}
 function adjustSkills(maxid) {
     var height = $(`#skills`).height();
     var max = maxid - 1;
@@ -42,7 +41,9 @@ function adjustProjects(pageId){
                         <div class="body">
                             <div id="project" class="project">
                                 <div class="project_block">
-                                    <div id=long_proj_${pageId} class="project_content">
+                                    <div class="side-heading">[...Continues]</div>
+                                    <div id=long_proj_${pageId}>
+                                        <div class="project_content"></div>
                                     </div>
                                     ${bottom}
                                 </div>
@@ -54,7 +55,21 @@ function adjustProjects(pageId){
     }
     height = $("#"+pageId).height()+20;
     while(height>1136){
-        $('#long_proj_'+pageId).prepend($('#'+pageId+' .project_content p').last())
-        height = $("#"+pageId).height()+20;
+        if($.trim($('#project_block_top_'+pageId.split('_').pop()).children().last().html())==''){
+            $('#project_block_top_'+pageId.split('_').pop()).children().last().remove();
+            $('#long_proj_'+pageId).prepend($('#project_block_top_'+pageId.split('_').pop()).children().last())
+            height = $("#"+pageId).height()+20;
+        }
+        else{
+            if($('#long_proj_'+pageId).children().first().attr('class')=="project_content"){
+                $('#long_proj_'+pageId).children().first().prepend($('#'+pageId+' .project_content p').last())
+            }
+            else{
+                $('#long_proj_'+pageId).prepend('<div class="project_content"></div>');
+                 $('#long_proj_'+pageId).children().first().prepend($('#'+pageId+' .project_content p').last())
+            }
+            height = $("#"+pageId).height()+20; 
+        }
+        
     }
 }
