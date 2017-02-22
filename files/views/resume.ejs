@@ -477,7 +477,7 @@
 					<div class="project_block">
 						<div id="project_block_top_0">
 						<div>
-							<p class="project_name"><% prior_projects.name.split(':').length >1 ? "Project Name:":""%></p>
+							<p class="project_name"><%= prior_projects.name.split(':').length >1 ? "Project Name:":""%></p>
 							<p class="project_name_1"><%=prior_projects.name.split(':').pop()%></p>
 						</div>
 					
@@ -530,7 +530,6 @@
 							for(var j=0;j<prior_projects_description.length;j++){
 								if(prior_projects_description[j].length>0){%>
 							<p><%=prior_projects_description[j]%></p><%}}%>
-							<p><%=prior_projects.contribution%></p>
 						</div>
 						<%}if(prior_projects.duration){%>
 						<div class="side-heading">
