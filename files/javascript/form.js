@@ -5,6 +5,7 @@ function handlePreview() {
     document.getElementById('front_end_select').value = ChosenOrder.getSelectionOrder(document.getElementById('front_end'));
     document.getElementById('databases_select').value = ChosenOrder.getSelectionOrder(document.getElementById('databases'));
     document.getElementById('technologies_select').value = ChosenOrder.getSelectionOrder(document.getElementById('technologies'));
+    if(document.getElementById("employee_id").value != "")
     document.getElementById('form').submit();
 }
 
