@@ -377,9 +377,9 @@
 			<div class="body">					
 				<p class="heading">
 					<%if(projects.name.length>0){%>SOME PRIOR IMPLEMENTATION EXPERIENCE:</p>
-				<hr class="underline_3"><%}
+				<hr class="underline_4"><%}
 					else{%>MAJOR IMPLEMENTATION EXPERIENCE:</p>
-				<hr class="underline_4"><%}%>
+				<hr class="underline_3"><%}%>
 				<div id="project" class="project">
 					
 				<div class="project_block">
@@ -468,11 +468,15 @@
 				<img class="logo" src="./images/logo.png"/>
 				<a class="url">www.zemosolabs.com</a>
 			</div>
-			<div class="body">					
-				<p class="heading">
-					<%if(projects.name.length>0){%>SOME PRIOR IMPLEMENTATION EXPERIENCE:<%}
-					else{%>MAJOR IMPLEMENTATION EXPERIENCE<%}%></p>
-				<hr class="underline_3">
+			<div class="body">
+				<% if(projects.name.length>0) {%>
+					<p class="heading">SOME PRIOR IMPLEMENTATION EXPERIENCE:</p>
+					<hr class="underline_4">
+				<%} else{%>
+					<p class="heading">MAJOR IMPLEMENTATION EXPERIENCE:</p>
+					<hr class="underline_3">
+				<%}%>					
+				
 				<div id="project" class="project">
 					<div class="project_block">
 						<div id="project_block_top_0">
